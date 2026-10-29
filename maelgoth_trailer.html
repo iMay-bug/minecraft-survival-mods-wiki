@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maelgoth: O Soberano do Vazio - Teaser Cinematográfico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void-bg: #07060c;
+      --void-dark: #0f0c18;
+      --void-accent: #c77dff;
+      --void-cyan: #00f0ff;
+      --void-crimson: #ff0054;
+      --void-gold: #ffd166;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--void-bg);
+      color: #e2e8f0;
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1200px;
+      padding: 30px 20px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--void-cyan);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 18px;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(0, 240, 255, 0.05);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+      transform: translateX(-3px);
+    }
+
+    .server-badge {
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      color: var(--void-gold);
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 209, 102, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 209, 102, 0.08);
+    }
+
+    main {
+      width: 100%;
+      max-width: 1100px;
+      padding: 20px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title-container {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .title-sub {
+      color: var(--void-crimson);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      text-shadow: 0 0 12px rgba(255, 0, 84, 0.6);
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--void-accent) 50%, var(--void-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 35px rgba(199, 125, 255, 0.5);
+      line-height: 1.1;
+    }
+
+    /* Video Player Box */
+    .video-theater {
+      width: 100%;
+      background: #000;
+      border-radius: 16px;
+      border: 2px solid rgba(199, 125, 255, 0.4);
+      box-shadow: 0 0 50px rgba(199, 125, 255, 0.25), 0 20px 40px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      position: relative;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      outline: none;
+    }
+
+    .player-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+      width: 100%;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-play {
+      background: linear-gradient(135deg, #7b2cbf, #c77dff);
+      color: #fff;
+      border: none;
+      box-shadow: 0 0 25px rgba(199, 125, 255, 0.5);
+    }
+
+    .btn-play:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(199, 125, 255, 0.8);
+    }
+
+    .btn-download {
+      background: rgba(0, 240, 255, 0.1);
+      color: var(--void-cyan);
+      border: 1px solid var(--void-cyan);
+    }
+
+    .btn-download:hover {
+      background: rgba(0, 240, 255, 0.25);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Lore Grid */
+    .lore-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin-top: 45px;
+    }
+
+    .lore-card {
+      background: rgba(20, 16, 32, 0.6);
+      border: 1px solid rgba(199, 125, 255, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .lore-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--void-accent);
+    }
+
+    .lore-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--void-gold);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lore-card p {
+      color: #a0aec0;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      color: #718096;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .title-sub { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <header>
+    <a href="index.html" class="back-btn">⬅ Voltar à Wiki</a>
+    <div class="server-badge">Boss Final do RPG</div>
+  </header>
+
+  <main>
+    <div class="title-container">
+      <div class="title-sub">A Ruptura das Realidades</div>
+      <h1>MAELGOTH</h1>
+    </div>
+
+    <div class="video-theater">
+      <video id="teaserVideo" controls preload="metadata" poster="maelgoth_sovereign_of_the_void_1793299366266.jpg">
+        <source src="maelgoth_multiverse_rift.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução direta de vídeos MP4.
+      </video>
+    </div>
+
+    <!-- Hidden audio track for enhanced browser web audio sync -->
+    <audio id="soundtrack" src="trailer_soundtrack.wav" preload="auto"></audio>
+
+    <div class="player-actions">
+      <button class="action-btn btn-play" id="playBtn" onclick="togglePlay()">▶ Assistir Trailer com Áudio Épico</button>
+      <a class="action-btn btn-download" href="maelgoth_multiverse_rift.mp4" download="Maelgoth_Multiverse_Rift.mp4">⬇ Baixar Vídeo MP4 (1080p)</a>
+    </div>
+
+    <div class="lore-grid">
+      <div class="lore-card">
+        <h3>⚔️ O Corte no Espaço-Tempo</h3>
+        <p>Ao atingir a fase de combate supremo, Maelgoth empunha a Grande Espada do Vazio Primordial, desferindo um golpe vertical que fende a atmosfera do mundo de blocos e estilhaça as barreiras dimensionais.</p>
+      </div>
+
+      <div class="lore-card">
+        <h3>🌌 O Multiverso Adentrando</h3>
+        <p>Através das fendas luminosas, universos alienígenas colidem: fendas de magma infernal, megacidades cyberpunk iluminadas por neon e vazios cósmicos de cristal começam a fundir-se com o relevo do servidor.</p>
+      </div>
+
+      <div class="lore-card">
+        <h3>☠️ A Batalha pela Realidade</h3>
+        <p>Apenas os guerreiros portadores das 5 Espadas Supremas e das armaduras de Matéria Vermelha e Vibranium poderão resistir aos raios dimensionais e impedir que a realidade seja consumida pelo Vazio.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Servidor Survival Minecraft Bedrock &copy; 2026 - Maelgoth: O Soberano do Vazio
+  </footer>
+
+  <script>
+    // Canvas Background Particles
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = Array.from({ length: 60 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2.5 + 0.5,
+      speedY: -Math.random() * 0.8 - 0.2,
+      speedX: (Math.random() - 0.5) * 0.5,
+      color: ['#c77dff', '#00f0ff', '#ff0054', '#ffd166'][Math.floor(Math.random() * 4)],
+      alpha: Math.random() * 0.6 + 0.2
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+        if (p.y < 0) { p.y = height; p.x = Math.random() * width; }
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Synchronized Audio & Video
+    const video = document.getElementById('teaserVideo');
+    const audio = document.getElementById('soundtrack');
+    const playBtn = document.getElementById('playBtn');
+
+    function togglePlay() {
+      if (video.paused) {
+        video.play();
+        audio.currentTime = video.currentTime;
+        audio.play().catch(() => {});
+        playBtn.innerHTML = '⏸ Pausar Trailer';
+      } else {
+        video.pause();
+        audio.pause();
+        playBtn.innerHTML = '▶ Assistir Trailer com Áudio Épico';
+      }
+    }
+
+    video.addEventListener('play', () => {
+      audio.currentTime = video.currentTime;
+      audio.play().catch(() => {});
+      playBtn.innerHTML = '⏸ Pausar Trailer';
+    });
+
+    video.addEventListener('pause', () => {
+      audio.pause();
+      playBtn.innerHTML = '▶ Assistir Trailer com Áudio Épico';
+    });
+
+    video.addEventListener('seeked', () => {
+      audio.currentTime = video.currentTime;
+    });
+  </script>
+</body>
+</html>
