@@ -2078,5 +2078,84 @@
 
     window.addEventListener('DOMContentLoaded', initApp);
   </script>
+
+  <!-- ================= TAB: KRAKEN BOSS ================= -->
+  <div id="tab-kraken" class="tab-content" style="display: none; padding: 20px 0;">
+    <div style="background: linear-gradient(180deg, rgba(10, 20, 35, 0.95), rgba(5, 10, 20, 0.98)); border: 2px solid #00d2ff; border-radius: 14px; padding: 30px; box-shadow: 0 0 35px rgba(0, 210, 255, 0.25); margin-bottom: 30px;">
+      
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 25px; border-bottom: 1px solid rgba(0, 210, 255, 0.3); padding-bottom: 20px;">
+        <div>
+          <span style="background: rgba(0, 210, 255, 0.15); color: #00e5ff; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; border: 1px solid #00e5ff;">BOSS FINAL DOS MARES</span>
+          <h2 style="color: #00d2ff; font-size: 32px; margin: 12px 0 6px 0; text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);">🐙 KRAKEN, O COLOSSO DO ABISMO</h2>
+          <p style="color: #a0aec0; margin: 0; font-size: 16px;">Encontro Épico em 2 Fases | Animações Orgânicas e Modelagem 3D Fiel | 100% Funcional no Bedrock</p>
+        </div>
+        <div style="background: rgba(0, 0, 0, 0.6); padding: 12px 20px; border-radius: 8px; border: 1px solid #ffaa00; text-align: right;">
+          <div style="color: #ffaa00; font-weight: bold; font-size: 14px;">INVOCAÇÃO EXCLUSIVA DE ADMIN</div>
+          <code style="color: #00ffcc; font-size: 14px;">/function spawn_kraken</code>
+        </div>
+      </div>
+
+      <!-- Showcase Image -->
+      <div style="text-align: center; margin: 25px 0;">
+        <img src="assets/kraken_comparison.png" alt="Kraken Showcase Comparativo Oficial" style="max-width: 100%; border-radius: 10px; border: 2px solid #00d2ff; box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);">
+      </div>
+
+      <!-- 2 Fases Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 30px;">
+        
+        <!-- Fase 1 Card -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid #00e5ff; border-radius: 10px; padding: 22px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <span style="background: #00e5ff; color: #000; font-weight: bold; padding: 4px 10px; border-radius: 6px; font-size: 13px;">FASE 1</span>
+            <h3 style="color: #00e5ff; margin: 0; font-size: 20px;">A Ruptura dos Tentáculos</h3>
+          </div>
+          <ul style="color: #cbd5e1; line-height: 1.8; padding-left: 20px; margin: 0;">
+            <li><strong>8 Tentáculos Colossais</strong> emergem em anel (raio de 18 blocos) ao redor da arena aquática.</li>
+            <li>Cada tentáculo tem <strong>350 HP</strong>, resistência total a repulsão e altura de 22 blocos.</li>
+            <li><strong>Animação Orgânica de Chicote:</strong> Ondulação serpentina fluida e espuma branca de impacto no mar.</li>
+            <li><strong>Ataques em Área:</strong> Geysers de água, raios elétricos no oceano e chicote com dano massivo.</li>
+            <li><strong>HUD Actionbar em Tempo Real:</strong> Mostra o contador de tentáculos vivos (ex: 8/8 ➔ 0/8).</li>
+            <li>O Kraken principal permanece oculto até que <em>todos os 8 tentáculos sejam destruídos</em>!</li>
+          </ul>
+        </div>
+
+        <!-- Fase 2 Card -->
+        <div style="background: rgba(30, 15, 20, 0.8); border: 1px solid #ff3366; border-radius: 10px; padding: 22px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <span style="background: #ff3366; color: #fff; font-weight: bold; padding: 4px 10px; border-radius: 6px; font-size: 13px;">FASE 2</span>
+            <h3 style="color: #ff3366; margin: 0; font-size: 20px;">O Titã Colossal Desperta</h3>
+          </div>
+          <ul style="color: #fecdd3; line-height: 1.8; padding-left: 20px; margin: 0;">
+            <li>O mar se abre com explosões sônicas e <strong>Camera Shake violento</strong> em todos os jogadores.</li>
+            <li><strong>Barra de Boss Oficial:</strong> <em>"☠ KRAKEN, O COLOSSO DO ABISMO ☠"</em> com <strong>4.000 HP</strong>.</li>
+            <li><strong>Escala Gigantesca (4.0x):</strong> Mais de 30 blocos de altura e 25 blocos de envergadura.</li>
+            <li><strong>Crista de Chifres & Olhos Predadores Dourados:</strong> Modelagem idêntica à referência artística.</li>
+            <li><strong>Habilidade Tsunami:</strong> Onda de choque sonoro que arremessa jogadores e inflige 65 de dano.</li>
+            <li><strong>Tinta Abissal:</strong> Nuvem de escuridão que causa Cegueira e Lentidão num raio de 32 blocos.</li>
+            <li><strong>Redemoinho:</strong> Puxa sobreviventes para o centro desferindo o golpe letal do bico quitinoso.</li>
+          </ul>
+        </div>
+
+        <!-- Drops & Admin Card -->
+        <div style="background: rgba(20, 25, 35, 0.8); border: 1px solid #ffcc00; border-radius: 10px; padding: 22px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <span style="background: #ffcc00; color: #000; font-weight: bold; padding: 4px 10px; border-radius: 6px; font-size: 13px;">RECOMPENSAS</span>
+            <h3 style="color: #ffcc00; margin: 0; font-size: 20px;">Drops Míticos & Admin</h3>
+          </div>
+          <ul style="color: #fef08a; line-height: 1.8; padding-left: 20px; margin: 0;">
+            <li><strong>Coração do Kraken (<code>cult:kraken_heart</code>):</strong> Relíquia primordial para forja cósmica.</li>
+            <li><strong>Tridente do Leviatã (<code>cult:leviathan_trident</code>):</strong> <strong>220 de Dano</strong> + Poder dos Mares.</li>
+            <li><strong>15.000 XP em Orbes</strong> com celebração de vitória global no servidor.</li>
+            <li><strong>Spawn Natural Desativado:</strong> Nem Maelgoth nem o Kraken surgem aleatoriamente.</li>
+            <li><strong>Comando Limpeza Admin:</strong> <code>/function matar_kraken</code> encerra a batalha e limpa o mar.</li>
+            <li><strong>Arquivos Blockbench:</strong> <code>Kraken.bbmodel</code> e <code>Kraken_Tentacle.bbmodel</code> inclusos.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
