@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiki & Craftings 3x3 — Server Survival Minecraft Bedrock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #06080d;
+      --bg-panel: #0e131f;
+      --bg-card: #131929;
+      --bg-card-hover: #192238;
+      --slot-bg: #1e2436;
+      --slot-bg-hover: #2c3652;
+      --slot-border-dark: #0b0e17;
+      --slot-border-light: #394564;
+      --accent-cyan: #00f0ff;
+      --accent-blue: #3b82f6;
+      --accent-purple: #c084fc;
+      --accent-gold: #fbbf24;
+      --accent-green: #10b981;
+      --accent-red: #f43f5e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 240, 255, 0.4);
+      --glow-cyan: 0 0 28px rgba(0, 240, 255, 0.22);
+      --glow-gold: 0 0 28px rgba(251, 191, 36, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-deep);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #26314a;
+      border-radius: 6px;
+      border: 2px solid var(--bg-deep);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-cyan);
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(0, 240, 255, 0.10) 0%, transparent 35%),
+        radial-gradient(circle at 88% 14%, rgba(192, 132, 252, 0.10) 0%, transparent 38%),
+        radial-gradient(circle at 50% 85%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 42px 42px, 42px 42px;
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Crisp pixelated rendering for Minecraft textures */
+    .mc-icon {
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      object-fit: contain;
+      user-select: none;
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65));
+      transition: transform 0.15s ease;
+    }
+
+    .container {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    /* Hero Header */
+    header.hero {
+      position: relative;
+      padding: 32px 24px 22px;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.16);
+      background: linear-gradient(180deg, rgba(14, 19, 31, 0.96) 0%, rgba(6, 8, 13, 0.94) 100%);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 30%, rgba(0, 240, 255, 0.28), rgba(192, 132, 252, 0.18));
+      border: 2px solid rgba(0, 240, 255, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--glow-cyan), inset 0 0 15px rgba(0, 240, 255, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-badge img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .brand-text h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.35rem, 2.2vw, 2.05rem);
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      background: linear-gradient(90deg, #ffffff 0%, #00f0ff 52%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+    }
+
+    .brand-text p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .live-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 10px var(--accent-green);
+    }
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .stat-pill {
+      background: linear-gradient(145deg, #151d30, #0f1523);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 18px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 145px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .stat-pill .stat-ico {
+      font-size: 1.5rem;
+    }
+
+    .stat-pill .num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .stat-pill .lbl {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(19, 25, 41, 0.85);
+      padding: 12px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 16px;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(59, 130, 246, 0.22));
+      color: var(--accent-cyan);
+      border-color: rgba(0, 240, 255, 0.55);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .search-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      flex: 1;
+      max-width: 780px;
+      justify-content: flex-end;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 230px;
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      padding: 10px 34px 10px 38px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .search-input-wrap input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.16);
+    }
+
+    .search-input-wrap .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    select.filter-select {
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      max-width: 215px;
+    }
+
+    select.filter-select:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    /* Main Content */
+    main.main-content {
+      padding: 28px 24px 90px;
+    }
+
+    /* Los Lobos Featured Showcase */
+    .lobos-showcase {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(0, 240, 255, 0.14), transparent 45%),
+        radial-gradient(circle at 15% 80%, rgba(251, 191, 36, 0.10), transparent 45%),
+        linear-gradient(135deg, rgba(16, 23, 42, 0.96) 0%, rgba(10, 14, 24, 0.98) 100%);
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 240, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lobos-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 1.42fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 1024px) {
+      .lobos-grid {
+        grid-template-columns: 1fr;
+      }
+      header.hero {
+        position: relative;
+      }
+    }
+
+    .lobos-visuals {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .lobos-render-card {
+      background: #070a10;
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 270px;
+      box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.08);
+    }
+
+    .lobos-render-card img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .lobos-render-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .lobos-render-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(6, 8, 13, 0.88);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-size: 0.73rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+
+    .lobos-dual-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(251, 191, 36, 0.16);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 99px;
+      backdrop-filter: blur(6px);
+    }
+
+    .lobos-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: space-between;
+    }
+
+    .lobos-step-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 14px;
+      padding: 14px 18px;
+      transition: background 0.2s;
+    }
+
+    .lobos-step-box:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .lobos-step-box h4 {
+      font-size: 0.88rem;
+      color: var(--accent-cyan);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .parts-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .part-chip {
+      background: linear-gradient(145deg, #182136, #111726);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 11px;
+      padding: 8px 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .part-chip:hover {
+      border-color: var(--accent-cyan);
+      background: #1f2b47;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 240, 255, 0.18);
+    }
+
+    .part-chip img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .part-chip .chip-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .part-chip .chip-name {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .part-chip .chip-sub {
+      font-size: 0.69rem;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Quick Filter Sub-bar for Supreme / Categories */
+    .sub-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+      align-items: center;
+    }
+
+    .sub-chip {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 8px 15px;
+      border-radius: 99px;
+      font-size: 0.83rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .sub-chip:hover {
+      color: var(--text-main);
+      border-color: rgba(0, 240, 255, 0.4);
+    }
+
+    .sub-chip.active {
+      background: rgba(0, 240, 255, 0.16);
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Recipe & Item Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    .recipe-card {
+      background: linear-gradient(165deg, #161e31 0%, #101523 100%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recipe-card.supreme-highlight {
+      border-color: rgba(251, 191, 36, 0.35);
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4), inset 0 0 25px rgba(251, 191, 36, 0.04);
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 240, 255, 0.5);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 22px rgba(0, 240, 255, 0.14);
+    }
+
+    .recipe-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .item-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, #2a344d, #181e2e);
+      border-top: 2px solid var(--slot-border-light);
+      border-left: 2px solid var(--slot-border-light);
+      border-right: 2px solid var(--slot-border-dark);
+      border-bottom: 2px solid var(--slot-border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    }
+
+    .item-icon-box:hover img {
+      transform: scale(1.12);
+    }
+
+    .item-icon-box img {
+      width: 42px;
+      height: 42px;
+    }
+
+    .recipe-title-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .recipe-title-wrap h3 {
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.28;
+      word-break: break-word;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .recipe-title-wrap h3:hover {
+      color: var(--accent-cyan);
+    }
+
+    .item-id-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      display: block;
+    }
+
+    .badges-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      font-size: 0.69rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .badge-mod {
+      background: rgba(59, 130, 246, 0.16);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+
+    .badge-dmg {
+      background: rgba(244, 63, 94, 0.18);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.4);
+    }
+
+    .badge-prot {
+      background: rgba(0, 240, 255, 0.15);
+      color: #67e8f9;
+      border: 1px solid rgba(0, 240, 255, 0.38);
+    }
+
+    .badge-emc {
+      background: rgba(16, 185, 129, 0.16);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.38);
+    }
+
+    .badge-station {
+      background: rgba(192, 132, 252, 0.14);
+      color: #d8b4fe;
+      border: 1px solid rgba(192, 132, 252, 0.35);
+    }
+
+    /* Authentic Beveled 3x3 Minecraft Crafting GUI */
+    .mc-crafting-container {
+      background: linear-gradient(180deg, #1b2234 0%, #141a29 100%);
+      border: 2px solid #2b3550;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.65);
+      position: relative;
+    }
+
+    .mc-station-tag {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      font-size: 0.64rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      opacity: 0.75;
+      text-transform: uppercase;
+    }
+
+    .mc-grid-3x3 {
+      display: grid;
+      grid-template-columns: repeat(3, 48px);
+      grid-template-rows: repeat(3, 48px);
+      gap: 4px;
+      background: #0d111a;
+      padding: 6px;
+      border-radius: 9px;
+      border-top: 2px solid #07090e;
+      border-left: 2px solid #07090e;
+      border-right: 2px solid #2a344e;
+      border-bottom: 2px solid #2a344e;
+    }
+
+    .mc-slot {
+      width: 48px;
+      height: 48px;
+      background: var(--slot-bg);
+      border-top: 2px solid var(--slot-border-dark);
+      border-left: 2px solid var(--slot-border-dark);
+      border-right: 2px solid var(--slot-border-light);
+      border-bottom: 2px solid var(--slot-border-light);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.14s ease;
+    }
+
+    .mc-slot.filled {
+      cursor: pointer;
+      background: radial-gradient(circle at 50% 50%, #262f47 0%, #1b2233 100%);
+    }
+
+    .mc-slot.filled:hover {
+      background: var(--slot-bg-hover);
+      border-color: var(--accent-cyan);
+      z-index: 3;
+      transform: scale(1.08);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+    }
+
+    .mc-slot img {
+      width: 34px;
+      height: 34px;
+    }
+
+    /* Tiny craftable indicator dot in corner of slot if ingredient has its own recipe */
+    .craftable-dot {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 5px var(--accent-cyan);
+      pointer-events: none;
+    }
+
+    .mc-arrow-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: var(--accent-cyan);
+      user-select: none;
+    }
+
+    .mc-arrow {
+      font-size: 1.55rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.35));
+    }
+
+    .mc-slot.result-slot {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.18), rgba(19, 25, 41, 0.95));
+      border: 2px solid rgba(0, 240, 255, 0.55);
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.18);
+    }
+
+    .mc-slot.result-slot:hover {
+      transform: scale(1.08);
+      border-color: var(--accent-gold);
+      box-shadow: var(--glow-gold);
+    }
+
+    .mc-slot.result-slot img {
+      width: 42px;
+      height: 42px;
+    }
+
+    .slot-count {
+      position: absolute;
+      bottom: 2px;
+      right: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+      pointer-events: none;
+    }
+
+    .ingredients-summary {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 10px;
+      margin-top: auto;
+    }
+
+    .ing-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 6px;
+      padding: 2px 7px;
+      margin: 2px 3px 2px 0;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: var(--text-main);
+      font-size: 0.76rem;
+    }
+
+    .ing-pill:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 240, 255, 0.12);
+    }
+
+    .ing-pill img {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Mods Grid */
+    .mods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .mod-card {
+      background: linear-gradient(165deg, #161e31 0%, #101523 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mod-card:hover {
+      border-color: var(--accent-cyan);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .mod-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mod-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      background: var(--slot-bg);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .mod-stats-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .mod-stats-bar span strong {
+      color: var(--accent-cyan);
+    }
+
+    /* Authentic Minecraft Hover Tooltip */
+    #mc-tooltip {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      background: rgba(16, 0, 16, 0.94);
+      border: 2px solid #5000ff;
+      box-shadow: 0 0 0 2px #100010, 0 10px 30px rgba(0, 0, 0, 0.85);
+      border-radius: 6px;
+      padding: 10px 14px;
+      min-width: 210px;
+      max-width: 340px;
+      display: none;
+      backdrop-filter: blur(4px);
+    }
+
+    #mc-tooltip .tt-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    #mc-tooltip .tt-header img {
+      width: 32px;
+      height: 32px;
+    }
+
+    #mc-tooltip .tt-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #ffffff;
+    }
+
+    #mc-tooltip .tt-title.supreme {
+      color: var(--accent-gold);
+    }
+
+    #mc-tooltip .tt-stats {
+      font-size: 0.78rem;
+      color: #a855f7;
+      margin: 4px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    #mc-tooltip .tt-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.71rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    #mc-tooltip .tt-mod {
+      font-size: 0.76rem;
+      font-style: italic;
+      color: #60a5fa;
+      margin-top: 2px;
+    }
+
+    #mc-tooltip .tt-hint {
+      font-size: 0.7rem;
+      color: var(--accent-cyan);
+      margin-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 4px;
+    }
+
+    /* Modal Inspector (JEI Style) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 11, 0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: linear-gradient(165deg, #131a2c 0%, #0b0f1a 100%);
+      border: 1px solid rgba(0, 240, 255, 0.45);
+      border-radius: 22px;
+      max-width: 940px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), var(--glow-cyan);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .modal-close:hover {
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+      transform: scale(1.06);
+    }
+
+    .copy-cmd-btn {
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      color: var(--accent-cyan);
+      padding: 5px 11px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      cursor: pointer;
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .copy-cmd-btn:hover {
+      background: rgba(0, 240, 255, 0.24);
+    }
+
+    .pagination-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .btn-page {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 20px;
+      border-radius: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .btn-page:hover:not(:disabled) {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .btn-page:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Minecraft Tooltip -->
+  <div id="mc-tooltip"></div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-top">
+        <div class="brand-title">
+          <div class="brand-badge">
+            <img src="assets/icons/Expansive_Biomes_RP_stark_akimbo_pistols.png" alt="Los Lobos" class="mc-icon" />
+          </div>
+          <div class="brand-text">
+            <h1>WIKI & CRAFTINGS 3x3 — SERVER SURVIVAL BEDROCK</h1>
+            <p>
+              <span class="live-dot"></span>
+              <span>Enciclopédia Interativa JEI com <strong>100% dos Ícones</strong> • Armas Supremas • Los Lobos Akimbo • 46 Mods</span>
+            </p>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-pill">
+            <span class="stat-ico">🧩</span>
+            <div>
+              <span class="num" id="stat-mods">46</span>
+              <span class="lbl">Mods no Pack</span>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-ico">💎</span>
+            <div>
+              <span class="num" id="stat-items">7.288</span>
+              <span class="lbl">Itens & Blocos</span>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-ico">⚒️</span>
+            <div>
+              <span class="num" id="stat-recipes">5.108</span>
+              <span class="lbl">Receitas 3x3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <div class="nav-tabs">
+          <button class="tab-btn active" onclick="switchTab('supreme')" id="tab-supreme">👑 Arsenal Supremo & Los Lobos</button>
+          <button class="tab-btn" onclick="switchTab('recipes')" id="tab-recipes">🛠️ Todas as Receitas (3x3)</button>
+          <button class="tab-btn" onclick="switchTab('items')" id="tab-items">💎 Catálogo de Itens & EMC</button>
+          <button class="tab-btn" onclick="switchTab('mods')" id="tab-mods">📦 Mods Instalados (46)</button>
+        </div>
+
+        <div class="search-filters">
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="Buscar item, ingrediente ou ID (ex: stark, lobos, matter, zeus)..." oninput="onFilterChange()" />
+            <button class="search-clear" id="search-clear-btn" onclick="clearSearch()">✕</button>
+          </div>
+          <select id="mod-filter" class="filter-select" onchange="onFilterChange()">
+            <option value="ALL">🧩 Todos os Mods</option>
+          </select>
+          <select id="cat-filter" class="filter-select" onchange="onFilterChange()">
+            <option value="ALL">📂 Todas Categorias</option>
+            <option value="weapon">⚔️ Armas & Espadas</option>
+            <option value="armor">🛡️ Armaduras</option>
+            <option value="tool">⛏️ Ferramentas</option>
+            <option value="block">🧱 Blocos & Máquinas</option>
+            <option value="item">🔮 Itens & Recursos</option>
+          </select>
+          <select id="sort-filter" class="filter-select" onchange="onFilterChange()">
+            <option value="default">✨ Relevância / Destaques</option>
+            <option value="damage">⚔️ Maior Dano</option>
+            <option value="protection">🛡️ Maior Proteção</option>
+            <option value="emc">⚡ Maior Valor EMC</option>
+            <option value="name">🔤 Nome (A-Z)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content container">
+    <!-- 1. LOS LOBOS & SUPREME ARSENAL SHOWCASE -->
+    <section id="section-los-lobos" class="lobos-showcase">
+      <div class="lobos-grid">
+        <div class="lobos-visuals">
+          <div class="lobos-render-card" onclick="openItemModal('cult:stark_akimbo_pistols')" style="cursor:pointer;">
+            <span class="lobos-render-tag">✨ Modelo 3D Blockbench (128x128 HD)</span>
+            <img src="assets/banners/los_lobos_3d_blockbench.png" alt="Los Lobos 3D Blockbench" />
+            <span class="lobos-dual-badge">✋ Equipa nas Duas Mãos (Akimbo)</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); text-align: center;">
+            💡 Passe o mouse sobre qualquer slot 3x3 para inspecionar ou <strong>clique em qualquer item</strong> para abrir sua árvore de receitas!
+          </p>
+        </div>
+
+        <div class="lobos-steps">
+          <div>
+            <span class="badge badge-prot">ESPADA Nº 1 — COYOTE STARRK & LILYNETTE (BLEACH)</span>
+            <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.45rem; margin-top: 6px; color: #fff;">
+              🔫 Árvore de Fabricação: Los Lobos (Akimbo)
+            </h2>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px; line-height: 1.45;">
+              Equipa automaticamente nas <strong>duas mãos (Direita + Offhand Esquerda)</strong>! Dispara <em>Cero Metralleta</em> (8 Ceros azuis alternados) e <em>Resurrección: Los Lobos</em> (20 Ceros + Matilha de Lobos Espirituais).
+            </p>
+          </div>
+
+          <div class="lobos-step-box">
+            <h4>
+              <span>1️⃣ Etapa 1: Fabricar as 5 Peças de Armeiro Hollow</span>
+              <span style="font-size:0.72rem; color:var(--text-muted);">5 Receitas Cross-Mod</span>
+            </h4>
+            <div class="parts-chips" id="lobos-stage1-chips"></div>
+          </div>
+
+          <div class="lobos-step-box">
+            <h4>
+              <span>2️⃣ Etapa 2: Montar a Pistola Direita e a Pistola Esquerda</span>
+              <span style="font-size:0.72rem; color:var(--text-muted);">2 Receitas Individuais</span>
+            </h4>
+            <div class="parts-chips" id="lobos-stage2-chips"></div>
+          </div>
+
+          <div class="lobos-step-box" style="border-left-color: var(--accent-gold); background: rgba(251, 191, 36, 0.05);">
+            <h4 style="color: var(--accent-gold);">
+              <span>3️⃣ Etapa 3: Fusão Final Akimbo (Duas Mãos)</span>
+              <span style="font-size:0.72rem;">Arma Suprema</span>
+            </h4>
+            <div class="parts-chips" id="lobos-stage3-chips"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Sub-Filters for Supreme Tab -->
+    <div class="sub-filter-bar" id="supreme-subfilters">
+      <button class="sub-chip active" onclick="setSupremeSub('ALL', this)">🌟 Todo o Arsenal Supremo (61)</button>
+      <button class="sub-chip" onclick="setSupremeSub('lobos', this)">🔫 Los Lobos Akimbo & Peças (8)</button>
+      <button class="sub-chip" onclick="setSupremeSub('swords', this)">⚔️ 5 Espadas Supremas & Armas (13)</button>
+      <button class="sub-chip" onclick="setSupremeSub('armors', this)">🛡️ 10 Armaduras Cross-Mod (40)</button>
+    </div>
+
+    <div class="section-header">
+      <h2 class="section-title" id="view-title">👑 Arsenal Supremo Cross-Mod & Receitas</h2>
+      <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;" id="results-counter">Carregando...</span>
+    </div>
+
+    <div id="content-grid" class="cards-grid"></div>
+
+    <div class="pagination-bar" id="pagination-bar"></div>
+  </main>
+
+  <!-- MODAL INSPECTOR (JEI STYLE) -->
+  <div class="modal-backdrop" id="item-modal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-box" id="modal-content"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const DATA = window.WIKI_DATA || { mods: [], items: {}, recipes: [] };
+    let currentTab = 'supreme';
+    let supremeSub = 'ALL';
+    let currentPage = 1;
+    const PAGE_SIZE = 36;
+
+    // Index recipes by result ID and by ingredient ID for instant JEI lookup
+    const recipesByResult = {};
+    const recipesByIngredient = {};
+    for (const r of DATA.recipes) {
+      const resId = r.result.id;
+      if (!recipesByResult[resId]) recipesByResult[resId] = [];
+      recipesByResult[resId].push(r);
+
+      const seenIng = new Set();
+      for (const cell of r.grid) {
+        if (cell && !seenIng.has(cell)) {
+          seenIng.add(cell);
+          if (!recipesByIngredient[cell]) recipesByIngredient[cell] = [];
+          recipesByIngredient[cell].push(r);
+        }
+      }
+    }
+
+    const LOBOS_IDS = new Set([
+      "cult:stark_akimbo_pistols",
+      "cult:stark_pistol_right",
+      "cult:stark_pistol_left",
+      "cult:lobos_engraved_barrel",
+      "cult:lobos_trigger_guard",
+      "cult:lobos_hollow_grip",
+      "cult:lobos_cero_chamber",
+      "cult:lobos_lilynette_soul"
+    ]);
+
+    const SUPREME_WEAPONS_IDS = new Set([
+      "cult:omniverse_god_blade",
+      "cult:elemental_cataclysm_blade",
+      "cult:dimension_slasher_katana",
+      "cult:astral_excalibur_morgan",
+      "cult:wither_necrotic_greatsword",
+      "cult:red_morning_star",
+      "cult:matter_gauntlet",
+      "cult:plasma_wings",
+      "cult:singularity_bow",
+      "cult:antimatter_railgun",
+      "cult:plasma_cannon",
+      "cult:nuclear_bomb",
+      "cult:nuclear_reactor_core"
+    ]);
+
+    const SUPREME_ARMORS_IDS = new Set();
+    for (const setKey of [
+      "singularity_god", "los_lobos", "wither_storm", "necro_monarch",
+      "elemental_emperor", "maho_arcane", "mecha_overdrive", "aether_celestial",
+      "red_matter", "dark_matter"
+    ]) {
+      for (const p of ["helmet", "chestplate", "leggings", "boots"]) {
+        SUPREME_ARMORS_IDS.add(`cult:${setKey}_${p}`);
+      }
+    }
+
+    const SUPREME_IDS = new Set([...LOBOS_IDS, ...SUPREME_WEAPONS_IDS, ...SUPREME_ARMORS_IDS]);
+
+    function getItem(id) {
+      if (!id) return null;
+      return DATA.items[id] || {
+        id,
+        name: id.split(':').pop().replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+        lore: '',
+        modId: id.split(':')[0],
+        modName: id.split(':')[0].toUpperCase(),
+        icon: '',
+        type: 'item',
+        damage: 0,
+        protection: 0,
+        emc: 0
+      };
+    }
+
+    function escapeAttr(s) {
+      return String(s || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function renderIconHtml(item, cls = "mc-icon") {
+      if (item && item.icon) {
+        return `<img src="${item.icon}" alt="${escapeAttr(item.name)}" class="${cls}" loading="lazy" />`;
+      }
+      const short = (item?.name || "?").substring(0, 2).toUpperCase();
+      return `<span style="font-family:'Orbitron',sans-serif;font-weight:800;color:var(--accent-gold);">${short}</span>`;
+    }
+
+    // Minecraft Floating Tooltip Handler
+    const ttEl = document.getElementById('mc-tooltip');
+    function showTooltip(e, itemId) {
+      const it = getItem(itemId);
+      if (!it) return;
+      const craftCnt = (recipesByResult[itemId] || []).length;
+      const usedCnt = (recipesByIngredient[itemId] || []).length;
+      const isSup = SUPREME_IDS.has(itemId);
+
+      let statsHtml = '';
+      if (it.damage > 0) statsHtml += `<span style="color:#fda4af;">⚔️ +${it.damage} Dano de Ataque</span>`;
+      if (it.protection > 0) statsHtml += `<span style="color:#67e8f9;">🛡️ +${it.protection} Proteção de Armadura</span>`;
+      if (it.emc > 0) statsHtml += `<span style="color:#6ee7b7;">⚡ ${it.emc.toLocaleString('pt-BR')} EMC</span>`;
+      if (it.offhand) statsHtml += `<span style="color:#fde047;">✋ Equipa na Mão Secundária (Offhand)</span>`;
+      if (it.lore) statsHtml += `<span style="color:#cbd5e1; margin-top:2px;">✨ ${it.lore}</span>`;
+
+      ttEl.innerHTML = `
+        <div class="tt-header">
+          ${renderIconHtml(it)}
+          <div>
+            <div class="tt-title ${isSup ? 'supreme' : ''}">${it.name}</div>
+            <div class="tt-mod">${it.modName}</div>
+          </div>
+        </div>
+        ${statsHtml ? `<div class="tt-stats">${statsHtml}</div>` : ''}
+        <div class="tt-id">${it.id}</div>
+        <div class="tt-hint">
+          ${craftCnt > 0 ? `⚒️ ${craftCnt} receita(s) de fabricação` : '📦 Recurso / Drop'}
+          ${usedCnt > 0 ? ` • 🔗 Usado em ${usedCnt} craft(s)` : ''}
+          <br>🖱️ Clique para inspecionar!
+        </div>
+      `;
+      ttEl.style.display = 'block';
+      moveTooltip(e);
+    }
+
+    function moveTooltip(e) {
+      if (ttEl.style.display !== 'block') return;
+      const pad = 16;
+      let x = e.clientX + pad;
+      let y = e.clientY + pad;
+      const rect = ttEl.getBoundingClientRect();
+      if (x + rect.width > window.innerWidth - 12) x = e.clientX - rect.width - pad;
+      if (y + rect.height > window.innerHeight - 12) y = e.clientY - rect.height - pad;
+      ttEl.style.left = `${Math.max(8, x)}px`;
+      ttEl.style.top = `${Math.max(8, y)}px`;
+    }
+
+    function hideTooltip() {
+      ttEl.style.display = 'none';
+    }
+
+    function initApp() {
+      document.getElementById('stat-mods').textContent = DATA.mods.length.toLocaleString('pt-BR');
+      document.getElementById('stat-items').textContent = Object.keys(DATA.items).length.toLocaleString('pt-BR');
+      document.getElementById('stat-recipes').textContent = DATA.recipes.length.toLocaleString('pt-BR');
+
+      const modSel = document.getElementById('mod-filter');
+      const sortedMods = [...DATA.mods].sort((a, b) => b.recipesCount - a.recipesCount || b.itemsCount - a.itemsCount);
+      for (const m of sortedMods) {
+        if (m.itemsCount === 0 && m.blocksCount === 0 && m.recipesCount === 0) continue;
+        const opt = document.createElement('option');
+        opt.value = m.id;
+        opt.textContent = `${m.name} (${m.recipesCount} crafts)`;
+        modSel.appendChild(opt);
+      }
+
+      // Populate Los Lobos stage chips
+      const fillChips = (containerId, ids) => {
+        const el = document.getElementById(containerId);
+        el.innerHTML = ids.map(id => {
+          const it = getItem(id);
+          return `
+            <div class="part-chip"
+                 onmouseenter="showTooltip(event, '${id}')"
+                 onmousemove="moveTooltip(event)"
+                 onmouseleave="hideTooltip()"
+                 onclick="openItemModal('${id}')">
+              ${renderIconHtml(it)}
+              <div class="chip-meta">
+                <span class="chip-name">${it.name}</span>
+                <span class="chip-sub">${it.damage > 0 ? `⚔️ ${it.damage} Dano` : '⚒️ Ver Receita 3x3'}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      };
+
+      fillChips('lobos-stage1-chips', [
+        'cult:lobos_engraved_barrel',
+        'cult:lobos_trigger_guard',
+        'cult:lobos_hollow_grip',
+        'cult:lobos_cero_chamber',
+        'cult:lobos_lilynette_soul'
+      ]);
+      fillChips('lobos-stage2-chips', [
+        'cult:stark_pistol_right',
+        'cult:stark_pistol_left'
+      ]);
+      fillChips('lobos-stage3-chips', [
+        'cult:stark_akimbo_pistols'
+      ]);
+
+      renderView();
+    }
+
+    function setSupremeSub(sub, btnEl) {
+      supremeSub = sub;
+      currentPage = 1;
+      document.querySelectorAll('#supreme-subfilters .sub-chip').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderView();
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      currentPage = 1;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(`tab-${tab}`).classList.add('active');
+      document.getElementById('section-los-lobos').style.display = (tab === 'supreme') ? 'block' : 'none';
+      document.getElementById('supreme-subfilters').style.display = (tab === 'supreme') ? 'flex' : 'none';
+      renderView();
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      onFilterChange();
+    }
+
+    function onFilterChange() {
+      const q = document.getElementById('search-input').value;
+      document.getElementById('search-clear-btn').style.display = q ? 'block' : 'none';
+      currentPage = 1;
+      renderView();
+    }
+
+    function buildRecipeCardHtml(rec) {
+      const resItem = getItem(rec.result.id);
+      const isSup = SUPREME_IDS.has(resItem.id);
+
+      const gridCellsHtml = rec.grid.map(cellId => {
+        if (!cellId) return `<div class="mc-slot"></div>`;
+        const ing = getItem(cellId);
+        const isCraftable = (recipesByResult[cellId] || []).length > 0;
+        return `
+          <div class="mc-slot filled"
+               onmouseenter="showTooltip(event, '${ing.id}')"
+               onmousemove="moveTooltip(event)"
+               onmouseleave="hideTooltip()"
+               onclick="openItemModal('${ing.id}')">
+            ${isCraftable ? '<span class="craftable-dot" title="Possui receita própria"></span>' : ''}
+            ${renderIconHtml(ing)}
+          </div>
+        `;
+      }).join('');
+
+      // Count total ingredients
+      const counts = {};
+      for (const c of rec.grid) {
+        if (c) counts[c] = (counts[c] || 0) + 1;
+      }
+      const ingSummary = Object.entries(counts).map(([cid, cnt]) => {
+        const ing = getItem(cid);
+        return `
+          <span class="ing-pill"
+                onmouseenter="showTooltip(event, '${cid}')"
+                onmousemove="moveTooltip(event)"
+                onmouseleave="hideTooltip()"
+                onclick="openItemModal('${cid}')">
+            ${renderIconHtml(ing)}
+            <strong>${cnt}x</strong> ${ing.name}
+          </span>
+        `;
+      }).join('');
+
+      const stationClean = (rec.station || 'crafting_table').replace('minecraft:', '').replace(/_/g, ' ');
+
+      return `
+        <div class="recipe-card ${isSup ? 'supreme-highlight' : ''}">
+          <div class="recipe-card-header">
+            <div class="item-icon-box"
+                 onmouseenter="showTooltip(event, '${resItem.id}')"
+                 onmousemove="moveTooltip(event)"
+                 onmouseleave="hideTooltip()"
+                 onclick="openItemModal('${resItem.id}')">
+              ${renderIconHtml(resItem)}
+            </div>
+            <div class="recipe-title-wrap">
+              <h3 onclick="openItemModal('${resItem.id}')">${resItem.name}</h3>
+              <span class="item-id-code">${resItem.id}</span>
+              <div class="badges-wrap">
+                <span class="badge badge-mod">${rec.modName || resItem.modName}</span>
+                ${resItem.damage > 0 ? `<span class="badge badge-dmg">⚔️ ${resItem.damage} Dano</span>` : ''}
+                ${resItem.protection > 0 ? `<span class="badge badge-prot">🛡️ +${resItem.protection} Prot</span>` : ''}
+                ${resItem.emc > 0 ? `<span class="badge badge-emc">⚡ ${resItem.emc.toLocaleString('pt-BR')} EMC</span>` : ''}
+              </div>
+            </div>
+          </div>
+
+          <div class="mc-crafting-container">
+            <span class="mc-station-tag">⚒️ ${stationClean}</span>
+            <div class="mc-grid-3x3">
+              ${gridCellsHtml}
+            </div>
+            <div class="mc-arrow-wrap">
+              <span style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted);">${rec.kind === 'shapeless' ? 'Sem Forma' : '3x3'}</span>
+              <div class="mc-arrow">➔</div>
+            </div>
+            <div class="mc-slot result-slot"
+                 onmouseenter="showTooltip(event, '${resItem.id}')"
+                 onmousemove="moveTooltip(event)"
+                 onmouseleave="hideTooltip()"
+                 onclick="openItemModal('${resItem.id}')">
+              ${renderIconHtml(resItem)}
+              ${rec.result.count > 1 ? `<span class="slot-count">${rec.result.count}</span>` : ''}
+            </div>
+          </div>
+
+          <div class="ingredients-summary">
+            ${resItem.lore ? `<div style="color:#cbd5e1; margin-bottom:7px; font-size:0.78rem;">✨ ${resItem.lore}</div>` : ''}
+            <div>${ingSummary}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function buildItemCardHtml(it) {
+      const hasRec = (recipesByResult[it.id] || []).length > 0;
+      const usedIn = (recipesByIngredient[it.id] || []).length;
+      const isSup = SUPREME_IDS.has(it.id);
+      return `
+        <div class="recipe-card ${isSup ? 'supreme-highlight' : ''}"
+             onmouseenter="showTooltip(event, '${it.id}')"
+             onmousemove="moveTooltip(event)"
+             onmouseleave="hideTooltip()"
+             onclick="openItemModal('${it.id}')"
+             style="cursor:pointer;">
+          <div class="recipe-card-header">
+            <div class="item-icon-box">
+              ${renderIconHtml(it)}
+            </div>
+            <div class="recipe-title-wrap">
+              <h3>${it.name}</h3>
+              <span class="item-id-code">${it.id}</span>
+              <div class="badges-wrap">
+                <span class="badge badge-mod">${it.modName}</span>
+                ${it.damage > 0 ? `<span class="badge badge-dmg">⚔️ ${it.damage} Dano</span>` : ''}
+                ${it.protection > 0 ? `<span class="badge badge-prot">🛡️ +${it.protection} Prot</span>` : ''}
+                ${it.emc > 0 ? `<span class="badge badge-emc">⚡ ${it.emc.toLocaleString('pt-BR')} EMC</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <div class="ingredients-summary">
+            ${it.lore ? `<div style="color:#cbd5e1; margin-bottom:6px;">✨ ${it.lore}</div>` : ''}
+            <div style="display:flex; justify-content:space-between; margin-top:4px; font-weight:600;">
+              <span style="color:${hasRec ? 'var(--accent-cyan)' : 'var(--text-muted)'};">${hasRec ? '🛠️ Possui Receita 3x3' : '📦 Recurso / Drop'}</span>
+              <span style="color:var(--accent-gold);">${usedIn > 0 ? `🔗 Usado em ${usedIn} craft(s)` : ''}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function sortItemsOrRecipes(list, sortMode, isRecipeList) {
+      const getIt = x => isRecipeList ? getItem(x.result.id) : x;
+      if (sortMode === 'damage') {
+        list.sort((a, b) => (getIt(b).damage - getIt(a).damage) || (getIt(b).protection - getIt(a).protection));
+      } else if (sortMode === 'protection') {
+        list.sort((a, b) => (getIt(b).protection - getIt(a).protection) || (getIt(b).damage - getIt(a).damage));
+      } else if (sortMode === 'emc') {
+        list.sort((a, b) => (getIt(b).emc - getIt(a).emc) || (getIt(b).damage - getIt(a).damage));
+      } else if (sortMode === 'name') {
+        list.sort((a, b) => getIt(a).name.localeCompare(getIt(b).name, 'pt-BR'));
+      } else {
+        // Default: Supreme & Lobos first, then highest stats
+        list.sort((a, b) => {
+          const ia = getIt(a), ib = getIt(b);
+          const la = LOBOS_IDS.has(ia.id) ? 2 : (SUPREME_IDS.has(ia.id) ? 1 : 0);
+          const lb = LOBOS_IDS.has(ib.id) ? 2 : (SUPREME_IDS.has(ib.id) ? 1 : 0);
+          if (lb !== la) return lb - la;
+          return (ib.damage - ia.damage) || (ib.protection - ia.protection) || (ib.emc - ia.emc);
+        });
+      }
+    }
+
+    function renderView() {
+      const q = (document.getElementById('search-input').value || '').trim().toLowerCase();
+      const modF = document.getElementById('mod-filter').value;
+      const catF = document.getElementById('cat-filter').value;
+      const sortF = document.getElementById('sort-filter').value;
+      const gridEl = document.getElementById('content-grid');
+      const pagEl = document.getElementById('pagination-bar');
+      const titleEl = document.getElementById('view-title');
+      const countEl = document.getElementById('results-counter');
+
+      if (currentTab === 'mods') {
+        titleEl.textContent = '📦 Todos os 46 Mods Instalados no Servidor';
+        gridEl.className = 'mods-grid';
+        const filteredMods = DATA.mods.filter(m => {
+          if (q && !m.name.toLowerCase().includes(q) && !m.id.toLowerCase().includes(q) && !m.desc.toLowerCase().includes(q)) return false;
+          return true;
+        });
+        countEl.textContent = `${filteredMods.length} mods encontrados`;
+        pagEl.innerHTML = '';
+        gridEl.innerHTML = filteredMods.map(m => `
+          <div class="mod-card" onclick="filterByMod('${m.id}')">
+            <div class="mod-card-top">
+              ${m.icon ? `<img src="${m.icon}" class="mod-icon" />` : `<div class="mod-icon" style="display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent-cyan);">MOD</div>`}
+              <div>
+                <h3 style="font-size:1.05rem;">${m.name}</h3>
+                <span class="item-id-code">v${m.version} • ${m.active ? '🟢 Ativo no Mundo' : '⚪ Instalado'}</span>
+              </div>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.45;">${m.desc}</p>
+            <div class="mod-stats-bar">
+              <span><strong>${m.itemsCount}</strong> Itens</span>
+              <span><strong>${m.blocksCount}</strong> Blocos</span>
+              <span><strong>${m.recipesCount}</strong> Crafts</span>
+              <span><strong>${m.entitiesCount}</strong> Entidades</span>
+            </div>
+          </div>
+        `).join('');
+        return;
+      }
+
+      gridEl.className = 'cards-grid';
+
+      if (currentTab === 'supreme' || currentTab === 'recipes') {
+        titleEl.textContent = currentTab === 'supreme'
+          ? '👑 Arsenal Supremo Cross-Mod (Los Lobos, 5 Espadas & 10 Armaduras)'
+          : '🛠️ Todas as Receitas de Crafting 3x3 dos Mods';
+
+        let list = DATA.recipes.filter(r => {
+          const resItem = getItem(r.result.id);
+          if (currentTab === 'supreme') {
+            if (!SUPREME_IDS.has(resItem.id)) return false;
+            if (supremeSub === 'lobos' && !LOBOS_IDS.has(resItem.id)) return false;
+            if (supremeSub === 'swords' && !SUPREME_WEAPONS_IDS.has(resItem.id)) return false;
+            if (supremeSub === 'armors' && !SUPREME_ARMORS_IDS.has(resItem.id)) return false;
+          }
+          if (modF !== 'ALL' && r.modId !== modF && resItem.modId !== modF) return false;
+          if (catF !== 'ALL' && resItem.type !== catF) return false;
+          if (q) {
+            const matchRes = resItem.name.toLowerCase().includes(q) || resItem.id.toLowerCase().includes(q) || (resItem.lore || '').toLowerCase().includes(q);
+            const matchIng = r.grid.some(cid => cid && (getItem(cid).name.toLowerCase().includes(q) || cid.toLowerCase().includes(q)));
+            if (!matchRes && !matchIng) return false;
+          }
+          return true;
+        });
+
+        sortItemsOrRecipes(list, sortF, true);
+
+        countEl.textContent = `${list.length.toLocaleString('pt-BR')} receitas encontradas`;
+        const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        const slice = list.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+        gridEl.innerHTML = slice.map(buildRecipeCardHtml).join('');
+        renderPagination(totalPages);
+      } else if (currentTab === 'items') {
+        titleEl.textContent = '💎 Catálogo Completo de Itens, Blocos, Armas & EMC';
+        let list = Object.values(DATA.items).filter(it => {
+          if (modF !== 'ALL' && it.modId !== modF) return false;
+          if (catF !== 'ALL' && it.type !== catF) return false;
+          if (q && !it.name.toLowerCase().includes(q) && !it.id.toLowerCase().includes(q) && !(it.lore || '').toLowerCase().includes(q)) return false;
+          return true;
+        });
+
+        sortItemsOrRecipes(list, sortF, false);
+
+        countEl.textContent = `${list.length.toLocaleString('pt-BR')} itens encontrados`;
+        const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        const slice = list.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+        gridEl.innerHTML = slice.map(buildItemCardHtml).join('');
+        renderPagination(totalPages);
+      }
+    }
+
+    function renderPagination(totalPages) {
+      const pagEl = document.getElementById('pagination-bar');
+      if (totalPages <= 1) {
+        pagEl.innerHTML = '';
+        return;
+      }
+      pagEl.innerHTML = `
+        <button class="btn-page" ${currentPage <= 1 ? 'disabled' : ''} onclick="changePage(1)">⏮️ Início</button>
+        <button class="btn-page" ${currentPage <= 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">⬅️ Anterior</button>
+        <span style="color:var(--text-muted); font-weight:700; padding: 0 10px;">Página <strong style="color:var(--accent-cyan);">${currentPage}</strong> de ${totalPages}</span>
+        <button class="btn-page" ${currentPage >= totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">Próxima ➡️</button>
+        <button class="btn-page" ${currentPage >= totalPages ? 'disabled' : ''} onclick="changePage(${totalPages})">Fim ⏭️</button>
+      `;
+    }
+
+    function changePage(p) {
+      currentPage = p;
+      renderView();
+      window.scrollTo({ top: 280, behavior: 'smooth' });
+    }
+
+    function filterByMod(modId) {
+      document.getElementById('mod-filter').value = modId;
+      switchTab('recipes');
+    }
+
+    function copyGiveCmd(cmd, btn) {
+      navigator.clipboard.writeText(cmd);
+      const old = btn.innerHTML;
+      btn.innerHTML = '✅ Comando Copiado!';
+      setTimeout(() => { btn.innerHTML = old; }, 1800);
+    }
+
+    function openItemModal(itemId) {
+      hideTooltip();
+      const it = getItem(itemId);
+      const craftRecipes = recipesByResult[itemId] || [];
+      const usageRecipes = (recipesByIngredient[itemId] || []).slice(0, 24);
+      const giveCmd = `/give @s ${it.id} 1`;
+
+      const modal = document.getElementById('item-modal');
+      const box = document.getElementById('modal-content');
+
+      box.innerHTML = `
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div style="display:flex; align-items:center; gap:18px; margin-bottom:22px; flex-wrap:wrap;">
+          <div class="item-icon-box" style="width:76px; height:76px;">
+            ${renderIconHtml(it)}
+          </div>
+          <div style="flex:1; min-width:220px;">
+            <span class="badge badge-mod">${it.modName}</span>
+            <h2 style="font-family:'Orbitron',sans-serif; font-size:1.45rem; margin-top:6px;">${it.name}</h2>
+            <button class="copy-cmd-btn" onclick="copyGiveCmd('${escapeAttr(giveCmd)}', this)">
+              📋 Copiar: ${giveCmd}
+            </button>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;">
+          ${it.damage > 0 ? `<span class="badge badge-dmg" style="font-size:0.82rem; padding:6px 12px;">⚔️ Dano de Ataque: ${it.damage}</span>` : ''}
+          ${it.protection > 0 ? `<span class="badge badge-prot" style="font-size:0.82rem; padding:6px 12px;">🛡️ Proteção: +${it.protection}</span>` : ''}
+          ${it.durability > 0 ? `<span class="badge badge-mod" style="font-size:0.82rem; padding:6px 12px;">🔧 Durabilidade: ${it.durability.toLocaleString('pt-BR')}</span>` : ''}
+          ${it.emc > 0 ? `<span class="badge badge-emc" style="font-size:0.82rem; padding:6px 12px;">⚡ Valor EMC: ${it.emc.toLocaleString('pt-BR')} EMC</span>` : ''}
+          ${it.offhand ? `<span class="badge badge-prot" style="font-size:0.82rem; padding:6px 12px;">✋ Equipa na Mão Secundária (Offhand)</span>` : ''}
+        </div>
+
+        ${it.lore ? `<p style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent-cyan); padding:12px 16px; border-radius:10px; margin-bottom:22px; color:#e2e8f0;">✨ ${it.lore}</p>` : ''}
+
+        <h3 style="font-family:'Orbitron',sans-serif; font-size:1.05rem; margin-bottom:14px; color:var(--accent-cyan);">
+          🛠️ Como Fabricar (${craftRecipes.length} Receita${craftRecipes.length === 1 ? '' : 's'} 3x3)
+        </h3>
+        ${craftRecipes.length > 0
+          ? `<div class="cards-grid" style="margin-bottom:26px;">${craftRecipes.map(buildRecipeCardHtml).join('')}</div>`
+          : `<p style="color:var(--text-muted); margin-bottom:24px; background:rgba(255,255,255,0.03); padding:14px; border-radius:12px;">📦 Este item é obtido por mineração, exploração, drops de chefes ou máquinas do mod <strong>${it.modName}</strong>.</p>`
+        }
+
+        ${usageRecipes.length > 0 ? `
+          <h3 style="font-family:'Orbitron',sans-serif; font-size:1.05rem; margin-bottom:14px; color:var(--accent-gold);">
+            🔗 Usado como Ingrediente para Fabricar (${(recipesByIngredient[itemId] || []).length} itens)
+          </h3>
+          <div class="parts-chips">
+            ${usageRecipes.map(ur => {
+              const rIt = getItem(ur.result.id);
+              return `
+                <div class="part-chip"
+                     onmouseenter="showTooltip(event, '${rIt.id}')"
+                     onmousemove="moveTooltip(event)"
+                     onmouseleave="hideTooltip()"
+                     onclick="openItemModal('${rIt.id}')">
+                  ${renderIconHtml(rIt)}
+                  <div class="chip-meta">
+                    <span class="chip-name">${rIt.name}</span>
+                    <span class="chip-sub">${rIt.modName}</span>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      `;
+
+      modal.classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('item-modal').classList.remove('open');
+    }
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
