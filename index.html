@@ -1079,6 +1079,195 @@
       opacity: 0.38;
       cursor: not-allowed;
     }
+  
+    /* ==========================================
+       HISTORY & LORE TAB STYLES
+       ========================================== */
+    .history-container {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto 50px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .history-video-box {
+      width: 100%;
+      background: #000;
+      border-radius: 18px;
+      border: 2px solid rgba(199, 125, 255, 0.4);
+      box-shadow: 0 0 45px rgba(199, 125, 255, 0.3), 0 20px 45px rgba(0, 0, 0, 0.85);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .history-video-box video {
+      width: 100%;
+      display: block;
+      background: #000;
+      border-bottom: 1px solid rgba(199, 125, 255, 0.2);
+    }
+
+    .history-video-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 16px 24px;
+      background: rgba(15, 12, 24, 0.96);
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .history-dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .history-dl-btn:hover {
+      background: rgba(0, 240, 255, 0.3);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .lore-text-wrapper {
+      background: rgba(18, 14, 28, 0.78);
+      border: 1px solid rgba(199, 125, 255, 0.25);
+      border-radius: 18px;
+      padding: 38px 44px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+    }
+
+    .lore-chapter {
+      margin-bottom: 30px;
+    }
+
+    .lore-chapter-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent-cyan);
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .lore-chapter h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.3rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--accent-purple) 60%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .lore-p {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #e2e8f0;
+      margin-bottom: 18px;
+      letter-spacing: 0.2px;
+    }
+
+    .lore-p.dropcap::first-letter {
+      font-family: 'Cinzel', serif;
+      font-size: 3.6rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 14px;
+      margin-top: 4px;
+      color: #ff0054;
+      text-shadow: 0 0 22px rgba(255, 0, 84, 0.65);
+      font-weight: 900;
+    }
+
+    .lore-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 35px 0;
+      position: relative;
+    }
+
+    .lore-divider::before, .lore-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(199, 125, 255, 0.4), transparent);
+    }
+
+    .lore-gem {
+      padding: 0 16px;
+      color: #ff0054;
+      font-size: 1.4rem;
+      text-shadow: 0 0 16px rgba(255, 0, 84, 0.85);
+    }
+
+    .lore-quote {
+      margin: 28px 0;
+      padding: 20px 26px;
+      background: rgba(255, 0, 84, 0.08);
+      border-left: 4px solid #ff0054;
+      border-radius: 0 12px 12px 0;
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      font-style: italic;
+      letter-spacing: 1px;
+      box-shadow: 0 0 25px rgba(255, 0, 84, 0.15);
+      line-height: 1.6;
+    }
+
+    .lore-creed-box {
+      margin-top: 32px;
+      padding: 26px;
+      background: linear-gradient(135deg, rgba(15, 12, 24, 0.95), rgba(35, 15, 50, 0.95));
+      border: 1px solid rgba(255, 0, 84, 0.4);
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 0 35px rgba(255, 0, 84, 0.22);
+    }
+
+    .creed-line {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      color: #94a3b8;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .creed-highlight {
+      font-family: 'Cinzel', serif;
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: #ff0054;
+      letter-spacing: 2px;
+      margin-top: 16px;
+      text-transform: uppercase;
+      text-shadow: 0 0 25px rgba(255, 0, 84, 0.8);
+    }
+
   </style>
 </head>
 <body>
@@ -1132,7 +1321,7 @@
           <button class="tab-btn" onclick="switchTab('recipes')" id="tab-recipes">🛠️ Todas as Receitas (3x3)</button>
           <button class="tab-btn" onclick="switchTab('items')" id="tab-items">💎 Catálogo de Itens & EMC</button>
           <button class="tab-btn" onclick="switchTab('mods')" id="tab-mods">📦 Mods Instalados (46)</button>
-          <a href="maelgoth_trailer.html" class="tab-btn" style="text-decoration: none; background: linear-gradient(135deg, rgba(255,0,84,0.25), rgba(199,125,255,0.25)); border: 1px solid #ff0054; color: #fff; box-shadow: 0 0 15px rgba(255,0,84,0.4);">🎬 Trailer: Maelgoth & Multiverso</a>
+          <button class="tab-btn" onclick="switchTab('historia')" id="tab-historia" style="background: linear-gradient(135deg, rgba(255,0,84,0.25), rgba(199,125,255,0.25)); border: 1px solid #ff0054; color: #fff; box-shadow: 0 0 15px rgba(255,0,84,0.4);">📜 História & Vídeo</button>
         </div>
 
         <div class="search-filters">
@@ -1629,7 +1818,68 @@
       const titleEl = document.getElementById('view-title');
       const countEl = document.getElementById('results-counter');
 
-      if (currentTab === 'mods') {
+      if (currentTab === 'historia') {
+          titleEl.textContent = '📜 Crônicas do Servidor: A Ruptura Multiversal';
+          countEl.textContent = 'Maelgoth, o Soberano do Vazio • Boss Final do RPG';
+          pagEl.innerHTML = '';
+          gridEl.className = 'history-container';
+          gridEl.innerHTML = `
+            <div class="history-video-box">
+              <video controls preload="metadata" poster="maelgoth_sovereign_of_the_void_1793299366266.jpg">
+                <source src="maelgoth_multiverse_rift.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos MP4.
+              </video>
+              <div class="history-video-footer">
+                <span>🎬 <strong>Teaser Cinematográfico:</strong> Maelgoth Rasgando o Espaço-Tempo (24s Full HD)</span>
+                <a href="maelgoth_multiverse_rift.mp4" download="Maelgoth_Multiverse_Rift.mp4" class="history-dl-btn">⬇ Baixar Vídeo MP4</a>
+              </div>
+            </div>
+
+            <div class="lore-text-wrapper">
+              <div class="lore-chapter">
+                <div class="lore-chapter-tag">Capítulo I</div>
+                <h2>O Despertar da Ruptura</h2>
+                <p class="lore-p dropcap">
+                  Por gerações, o seu mundo foi um refúgio pacífico. As árvores cresciam altas, os vilarejos prosperavam ao som dos sinos, e o sol nascia sempre com a mesma promessa de paz. Mas a harmonia durou até o dia em que o céu se partiu.
+                </p>
+                <p class="lore-p">
+                  Não houve aviso. Apenas um estrondo ensurdecedor que abalou a rocha-mãe (bedrock) e fez as estrelas tremerem. De repente, fendas cintilantes — rasgos purpúreos e verde-neon no próprio tecido do espaço — começaram a rasgar os horizontes.
+                </p>
+                <p class="lore-p">
+                  Através dessas fendas, vislumbres de outros mundos podiam ser vistos. Mundos onde a luz do sol nunca brilha, onde o nether consumiu a superfície, ou onde civilizações inteiras foram reduzidas a cinzas e dados corrompidos. O multiverso de blocos está colidindo, e os mundos estão convergindo para um único ponto de impacto: o seu lar.
+                </p>
+              </div>
+
+              <div class="lore-divider">
+                <span class="lore-gem">☠</span>
+              </div>
+
+              <div class="lore-chapter">
+                <div class="lore-chapter-tag">Capítulo II</div>
+                <h2>Seu Nome era Maelgoth</h2>
+                <p class="lore-p">
+                  Durante eras incontáveis, ele permaneceu adormecido, observando os mundos nascerem e morrerem através das barreiras da existência. Ele testemunhou a criação de civilizações, a ascensão de impérios e a destruição de dimensões inteiras. E, a cada mundo que desaparecia, sua força crescia.
+                </p>
+                <blockquote class="lore-quote">
+                  "Mas Maelgoth não desejava apenas destruir.<br>Ele desejava unir tudo."
+                </blockquote>
+                <p class="lore-p">
+                  Para ele, a existência era uma falha. Mundos separados, realidades independentes e dimensões isoladas eram apenas fragmentos de uma criação imperfeita. Em sua visão distorcida, a única maneira de corrigir esse erro era destruir as barreiras que separavam os universos e fundi-los em uma única realidade sob seu domínio.
+                </p>
+              </div>
+
+              <div class="lore-creed-box">
+                <div class="creed-line">Uma realidade sem passado.</div>
+                <div class="creed-line">Sem futuro.</div>
+                <div class="creed-line">Sem liberdade.</div>
+                <div class="creed-highlight">Uma realidade onde tudo obedeceria à sua vontade.</div>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        if (currentTab === 'mods') {
         titleEl.textContent = '📦 Todos os 46 Mods Instalados no Servidor';
         gridEl.className = 'mods-grid';
         const filteredMods = DATA.mods.filter(m => {
