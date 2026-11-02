@@ -1268,7 +1268,197 @@
       text-shadow: 0 0 25px rgba(255, 0, 84, 0.8);
     }
 
+  
+    /* QUICK CHIPS ROW */
+    .quick-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .quick-chip {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .quick-chip:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-cyan);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .quick-chip.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(168, 85, 247, 0.3));
+      border-color: var(--accent-cyan);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    /* BOSSES CARDS */
+    .boss-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .boss-card.nihilus {
+      border-color: rgba(192, 132, 252, 0.35);
+    }
+    .boss-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .boss-title-wrap h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.65rem;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .boss-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .boss-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .boss-stat-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+    .boss-stat-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .boss-stat-val {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+    .boss-phase-box {
+      background: rgba(0, 0, 0, 0.2);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+    }
+    .boss-drops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .boss-drop-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .boss-drop-card:hover {
+      border-color: var(--accent-gold);
+      background: rgba(251, 191, 36, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* EMC TABLE & CARDS */
+    .emc-info-banner {
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.12), rgba(16, 185, 129, 0.08));
+      border: 1px solid rgba(234, 179, 8, 0.3);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .emc-subfilters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .emc-table-wrap {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow-x: auto;
+    }
+    .emc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .emc-table th {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 12px 16px;
+      text-align: left;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .emc-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: middle;
+    }
+    .emc-table tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .emc-val-buy {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      color: #34d399;
+    }
+    .emc-val-sell {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      color: #fbbf24;
+    }
   </style>
+
 </head>
 <body>
 
@@ -1317,11 +1507,25 @@
 
       <div class="controls-bar">
         <div class="nav-tabs">
-          <button class="tab-btn active" onclick="switchTab('supreme')" id="tab-supreme">👑 Arsenal Supremo & Los Lobos</button>
+          <button class="tab-btn active" onclick="switchTab('supreme')" id="tab-supreme">👑 Arsenal Supremo (7 Divinas & 10 Armaduras)</button>
+          <button class="tab-btn" onclick="switchTab('bosses')" id="tab-bosses" style="background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(56,189,248,0.5); color: #fff;">🐙 Bosses & Raids Épicas</button>
+          <button class="tab-btn" onclick="switchTab('emc')" id="tab-emc" style="background: linear-gradient(135deg, rgba(234,179,8,0.2), rgba(16,185,129,0.2)); border: 1px solid rgba(234,179,8,0.5); color: #fff;">⚡ Economia Quântica & Minérios EMC</button>
           <button class="tab-btn" onclick="switchTab('recipes')" id="tab-recipes">🛠️ Todas as Receitas (3x3)</button>
-          <button class="tab-btn" onclick="switchTab('items')" id="tab-items">💎 Catálogo de Itens & EMC</button>
-          <button class="tab-btn" onclick="switchTab('mods')" id="tab-mods">📦 Mods Instalados (45)</button>
+          <button class="tab-btn" onclick="switchTab('items')" id="tab-items">💎 Catálogo de Itens</button>
+          <button class="tab-btn" onclick="switchTab('mods')" id="tab-mods">📦 Mods Instalados (44)</button>
           <button class="tab-btn" onclick="switchTab('historia')" id="tab-historia" style="background: linear-gradient(135deg, rgba(255,0,84,0.25), rgba(199,125,255,0.25)); border: 1px solid #ff0054; color: #fff; box-shadow: 0 0 15px rgba(255,0,84,0.4);">📜 História & Vídeo</button>
+        </div>
+
+        <!-- Quick Filter Pills under Search Bar -->
+        <div class="quick-chips-row" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; margin-bottom:4px;">
+          <button class="quick-chip active" onclick="quickFilterAction('all', this)">✨ Todos</button>
+          <button class="quick-chip" onclick="quickFilterAction('god_swords', this)">⚔️ 7 Armas Divinas</button>
+          <button class="quick-chip" onclick="quickFilterAction('armors_3d', this)">🛡️ 10 Armaduras 3D</button>
+          <button class="quick-chip" onclick="quickFilterAction('emc_ores', this)">⛏️ Minérios EMC (103)</button>
+          <button class="quick-chip" onclick="quickFilterAction('bosses', this)">🐙 Bosses (Kraken & Nihilus)</button>
+          <button class="quick-chip" onclick="quickFilterAction('more_ores', this)">💎 More Ores</button>
+          <button class="quick-chip" onclick="quickFilterAction('utilitycraft', this)">⚙️ UtilityCraft</button>
+          <button class="quick-chip" onclick="quickFilterAction('create', this)">🚂 Create</button>
         </div>
 
         <div class="search-filters">
@@ -1467,6 +1671,13 @@
     ]);
 
     const SUPREME_WEAPONS_IDS = new Set([
+      "cult:genesis_oblivion_blade",
+      "cult:void_monarch_katana",
+      "cult:chronos_infinity_scythe",
+      "cult:omniverse_apex_annihilator",
+      "cult:espada_caida",
+      "cult:eternity_ragnarok_blade",
+      "cult:abyssal_kraken_slayer",
       "cult:omniverse_god_blade",
       "cult:elemental_cataclysm_blade",
       "cult:dimension_slasher_katana",
@@ -1478,6 +1689,10 @@
       "cult:singularity_bow",
       "cult:antimatter_railgun",
       "cult:plasma_cannon",
+      "cult:leviathan_trident",
+      "cult:abyssal_horn",
+      "cult:abyssal_eye_of_nihilus",
+      "cult:kraken_heart",
       "cult:nuclear_bomb",
       "cult:nuclear_reactor_core"
     ]);
@@ -1637,11 +1852,82 @@
       renderView();
     }
 
+
+    let emcCategoryFilter = 'ALL';
+
+    function setEmcCategory(cat, btnEl) {
+      emcCategoryFilter = cat;
+      currentPage = 1;
+      document.querySelectorAll('.emc-sub-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderView();
+    }
+
+    function quickFilterAction(type, btnEl) {
+      document.querySelectorAll('.quick-chip').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      const sInput = document.getElementById('search-input');
+      const modFilter = document.getElementById('mod-filter');
+      const catFilter = document.getElementById('cat-filter');
+
+      if (type === 'all') {
+        sInput.value = '';
+        modFilter.value = 'ALL';
+        catFilter.value = 'ALL';
+        switchTab('supreme');
+      } else if (type === 'god_swords') {
+        sInput.value = '';
+        modFilter.value = 'ALL';
+        catFilter.value = 'ALL';
+        switchTab('supreme');
+        setSupremeSub('swords', document.querySelectorAll('#supreme-subfilters .sub-chip')[2]);
+      } else if (type === 'armors_3d') {
+        sInput.value = '';
+        modFilter.value = 'ALL';
+        catFilter.value = 'ALL';
+        switchTab('supreme');
+        setSupremeSub('armors', document.querySelectorAll('#supreme-subfilters .sub-chip')[3]);
+      } else if (type === 'emc_ores') {
+        sInput.value = '';
+        switchTab('emc');
+        emcCategoryFilter = 'mod_ores';
+        renderView();
+      } else if (type === 'bosses') {
+        sInput.value = '';
+        switchTab('bosses');
+      } else if (type === 'more_ores') {
+        sInput.value = '';
+        modFilter.value = 'More_Ores_Official_BP';
+        switchTab('recipes');
+      } else if (type === 'utilitycraft') {
+        sInput.value = '';
+        modFilter.value = 'UtilityCraft_BP';
+        switchTab('recipes');
+      } else if (type === 'create') {
+        sInput.value = '';
+        modFilter.value = 'Create_BP';
+        switchTab('recipes');
+      }
+      onFilterChange();
+    }
+
+    // Hotkey '/' to focus search bar
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== document.getElementById('search-input')) {
+        e.preventDefault();
+        const input = document.getElementById('search-input');
+        input.focus();
+        input.select();
+      }
+    });
+
     function switchTab(tab) {
       currentTab = tab;
       currentPage = 1;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(`tab-${tab}`).classList.add('active');
+      const activeBtn = document.getElementById(`tab-${tab}`);
+      if (activeBtn) activeBtn.classList.add('active');
       document.getElementById('section-los-lobos').style.display = (tab === 'supreme') ? 'block' : 'none';
       document.getElementById('supreme-subfilters').style.display = (tab === 'supreme') ? 'flex' : 'none';
       renderView();
@@ -1817,6 +2103,172 @@
       const pagEl = document.getElementById('pagination-bar');
       const titleEl = document.getElementById('view-title');
       const countEl = document.getElementById('results-counter');
+
+      
+      if (currentTab === 'bosses') {
+        titleEl.textContent = '🐙 Raid Bosses & Entidades Épicas do Servidor';
+        countEl.textContent = '2 Chefes Lendários Configurados';
+        gridEl.className = 'bosses-container';
+        pagEl.innerHTML = '';
+
+        gridEl.innerHTML = (DATA.bosses || []).map(b => `
+          <div class="boss-card ${b.id === 'boss_nihilus' ? 'nihilus' : ''}">
+            <div class="boss-header">
+              <div class="boss-title-wrap">
+                <span class="boss-badge">${b.title}</span>
+                <h3 style="margin-top:6px;">${b.name}</h3>
+                <span style="font-size:0.85rem; color:var(--text-muted);">📍 Local de Spawn / Bioma: <strong>${b.biome}</strong></span>
+              </div>
+            </div>
+
+            <div class="boss-stats-grid">
+              <div class="boss-stat-box">
+                <div class="boss-stat-lbl">Vida Máxima (HP)</div>
+                <div class="boss-stat-val" style="color:#ef4444;">❤️ ${b.hp}</div>
+              </div>
+              <div class="boss-stat-box">
+                <div class="boss-stat-lbl">Poder de Dano</div>
+                <div class="boss-stat-val" style="color:#f59e0b;">⚔️ ${b.damage}</div>
+              </div>
+              <div class="boss-stat-box">
+                <div class="boss-stat-lbl">Dificuldade da Raid</div>
+                <div class="boss-stat-val" style="color:#a855f7;">💀 Nível Deus (Co-op)</div>
+              </div>
+            </div>
+
+            <h4 style="font-family:'Orbitron',sans-serif; font-size:1.05rem; margin-bottom:12px; color:var(--accent-cyan);">
+              🌀 Mecânicas de Fases do Chefe
+            </h4>
+            ${b.phases.map(ph => `
+              <div class="boss-phase-box" style="border-left-color: ${ph.color};">
+                <h5 style="color:${ph.color}; font-size:0.95rem; margin-bottom:4px; font-weight:700;">${ph.name}</h5>
+                <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.45;">${ph.desc}</p>
+              </div>
+            `).join('')}
+
+            <h4 style="font-family:'Orbitron',sans-serif; font-size:1.05rem; margin-top:22px; margin-bottom:12px; color:var(--accent-gold);">
+              💎 Recompensas & Drops Exclusivos
+            </h4>
+            <div class="boss-drops-grid">
+              ${b.drops.map(d => {
+                const it = getItem(d.id);
+                return `
+                  <div class="boss-drop-card" onclick="openItemModal('${d.id}')">
+                    <div class="item-icon-box" style="width:50px; height:50px; flex-shrink:0;">
+                      ${renderIconHtml(it)}
+                    </div>
+                    <div>
+                      <div style="font-weight:700; font-size:0.92rem; color:#fff;">${d.name}</div>
+                      <div style="font-size:0.75rem; color:#34d399; font-weight:700;">Chance: ${d.chance}</div>
+                      <div style="font-size:0.75rem; color:var(--text-muted);">${d.desc}</div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `).join('');
+        return;
+      }
+
+      if (currentTab === 'emc') {
+        titleEl.textContent = '⚡ Economia Quântica & Tabela Universal de EMC';
+        gridEl.className = 'emc-container';
+
+        const emcList = (DATA.emcRegistry || []).filter(e => {
+          if (emcCategoryFilter !== 'ALL' && e.cat !== emcCategoryFilter) return false;
+          if (q) {
+            const matchName = e.name.toLowerCase().includes(q);
+            const matchId = e.id.toLowerCase().includes(q);
+            if (!matchName && !matchId) return false;
+          }
+          return true;
+        });
+
+        countEl.textContent = `${emcList.length.toLocaleString('pt-BR')} itens com valor EMC`;
+
+        const totalPages = Math.max(1, Math.ceil(emcList.length / PAGE_SIZE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        const slice = emcList.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+        gridEl.innerHTML = `
+          <div class="emc-info-banner">
+            <div>
+              <h3 style="font-family:'Orbitron',sans-serif; color:#fbbf24; font-size:1.15rem; margin-bottom:4px;">
+                ⚡ Sistema de Transmutação & Equivalência Quântica (EMC)
+              </h3>
+              <p style="font-size:0.85rem; color:#cbd5e1; max-width:850px; line-height:1.45;">
+                Troque seus minérios brutos, lingotes e recursos de todos os mods (More Ores, UtilityCraft, Create, Nuclear) por EMC usando o <strong>Tablet de Transmutação Quântica</strong> (<code style="color:var(--accent-cyan);">cult:quantum_tablet</code>).
+                <br>🔒 <strong>Taxa Anti-Inflação:</strong> Venda de itens devolve <strong>40% do valor base</strong> em energia quântica, impedindo duplicadores e ciclos infinitos.
+              </p>
+            </div>
+            <button class="copy-cmd-btn" onclick="openItemModal('cult:quantum_tablet')" style="padding:10px 18px; font-size:0.85rem;">
+              🔮 Inspecionar Tablet Quântico
+            </button>
+          </div>
+
+          <div class="emc-subfilters">
+            <button class="quick-chip ${emcCategoryFilter === 'ALL' ? 'active' : ''} emc-sub-btn" onclick="setEmcCategory('ALL', this)">🌟 Todos (${(DATA.emcRegistry || []).length})</button>
+            <button class="quick-chip ${emcCategoryFilter === 'mod_ores' ? 'active' : ''} emc-sub-btn" onclick="setEmcCategory('mod_ores', this)">⛏️ Minérios de Mods (103)</button>
+            <button class="quick-chip ${emcCategoryFilter === 'metals' ? 'active' : ''} emc-sub-btn" onclick="setEmcCategory('metals', this)">💎 Metais Preciosos (40)</button>
+            <button class="quick-chip ${emcCategoryFilter === 'equipment' ? 'active' : ''} emc-sub-btn" onclick="setEmcCategory('equipment', this)">⚔️ Armas & Divinas (77)</button>
+            <button class="quick-chip ${emcCategoryFilter === 'rare' ? 'active' : ''} emc-sub-btn" onclick="setEmcCategory('rare', this)">🔮 Drops Raros (59)</button>
+            <button class="quick-chip ${emcCategoryFilter === 'blocks' ? 'active' : ''} emc-sub-btn" onclick="setEmcCategory('blocks', this)">🧱 Blocos (24)</button>
+          </div>
+
+          <div class="emc-table-wrap">
+            <table class="emc-table">
+              <thead>
+                <tr>
+                  <th style="width:48px;">Ícone</th>
+                  <th>Nome do Recurso</th>
+                  <th>Identificador (ID)</th>
+                  <th>Categoria</th>
+                  <th>Valor de Compra (Síntese)</th>
+                  <th>Valor de Venda (Queima 40%)</th>
+                  <th style="text-align:right;">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${slice.map(e => {
+                  const it = getItem(e.id);
+                  return `
+                    <tr>
+                      <td>
+                        <div class="item-icon-box" style="width:40px; height:40px; cursor:pointer;" onclick="openItemModal('${e.id}')">
+                          ${renderIconHtml(it)}
+                        </div>
+                      </td>
+                      <td>
+                        <strong style="color:#fff; cursor:pointer;" onclick="openItemModal('${e.id}')">${e.name}</strong>
+                      </td>
+                      <td>
+                        <code class="item-id-code" style="font-size:0.75rem;">${e.id}</code>
+                      </td>
+                      <td>
+                        <span class="badge badge-mod" style="font-size:0.7rem; text-transform:uppercase;">${e.cat}</span>
+                      </td>
+                      <td>
+                        <span class="emc-val-buy">⚡ ${e.buy.toLocaleString('pt-BR')} EMC</span>
+                      </td>
+                      <td>
+                        <span class="emc-val-sell">🔥 ${e.sell.toLocaleString('pt-BR')} EMC</span>
+                      </td>
+                      <td style="text-align:right;">
+                        <button class="quick-chip" style="display:inline-flex; font-size:0.75rem; padding:4px 10px;" onclick="openItemModal('${e.id}')">
+                          🔍 Ver Craft 3x3
+                        </button>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+        renderPagination(totalPages);
+        return;
+      }
 
       if (currentTab === 'historia') {
           titleEl.textContent = '📜 Crônicas do Servidor: A Ruptura Multiversal';
