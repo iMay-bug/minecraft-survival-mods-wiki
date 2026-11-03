@@ -11568,7 +11568,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 512
+      "emc": 8192,
+      "emc_sell": 3276
     },
     "digital_miner:diamond_plate": {
       "id": "digital_miner:diamond_plate",
@@ -55603,7 +55604,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 5000
+      "emc": 25000,
+      "emc_sell": 10000
     },
     "sns:pink_diamond_axe": {
       "id": "sns:pink_diamond_axe",
@@ -56938,7 +56940,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 4000
+      "emc": 16000,
+      "emc_sell": 6400
     },
     "sns:white_diamond_axe": {
       "id": "sns:white_diamond_axe",
@@ -70228,7 +70231,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 1500
+      "emc": 7500,
+      "emc_sell": 3000
     },
     "utilitycraft:stone_pebble": {
       "id": "utilitycraft:stone_pebble",
@@ -98803,7 +98807,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 4096
+      "emc": 250000,
+      "emc_sell": 100000
     },
     "minecraft:netherite_chestplate": {
       "id": "minecraft:netherite_chestplate",
@@ -98833,7 +98838,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 36864
+      "emc": 1080000,
+      "emc_sell": 432000
     },
     "minecraft:netherite_helmet": {
       "id": "minecraft:netherite_helmet",
@@ -98878,7 +98884,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 4096
+      "emc": 120000,
+      "emc_sell": 48000
     },
     "minecraft:amethyst_shard": {
       "id": "minecraft:amethyst_shard",
@@ -98923,7 +98930,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 512
+      "emc": 8000,
+      "emc_sell": 3200
     },
     "minecraft:axolotl_bucket": {
       "id": "minecraft:axolotl_bucket",
@@ -99013,7 +99021,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 32
+      "emc": 1024,
+      "emc_sell": 409
     },
     "minecraft:fire_charge": {
       "id": "minecraft:fire_charge",
@@ -99073,7 +99082,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 1024
+      "emc": 25000,
+      "emc_sell": 10000
     },
     "minecraft:echo_shard": {
       "id": "minecraft:echo_shard",
@@ -99088,7 +99098,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 0
+      "emc": 30000,
+      "emc_sell": 12000
     },
     "minecraft:crying_obsidian": {
       "id": "minecraft:crying_obsidian",
@@ -99118,7 +99129,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 256
+      "emc": 5000,
+      "emc_sell": 2000
     },
     "minecraft:ender_eye": {
       "id": "minecraft:ender_eye",
@@ -99208,7 +99220,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 128
+      "emc": 25000,
+      "emc_sell": 10000
     },
     "minecraft:gold_block": {
       "id": "minecraft:gold_block",
@@ -99223,7 +99236,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 216
+      "emc": 4608,
+      "emc_sell": 1843
     },
     "minecraft:shulker_shell": {
       "id": "minecraft:shulker_shell",
@@ -99238,7 +99252,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 128
+      "emc": 15000,
+      "emc_sell": 6000
     },
     "minecraft:blue_ice": {
       "id": "minecraft:blue_ice",
@@ -99283,7 +99298,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 2048
+      "emc": 150000,
+      "emc_sell": 60000
     },
     "minecraft:chorus_fruit": {
       "id": "minecraft:chorus_fruit",
@@ -99358,7 +99374,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 0
+      "emc": 250000,
+      "emc_sell": 100000
     },
     "minecraft:black_wool": {
       "id": "minecraft:black_wool",
@@ -99418,7 +99435,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 512
+      "emc": 8192,
+      "emc_sell": 3276
     },
     "minecraft:redstone": {
       "id": "minecraft:redstone",
@@ -99553,7 +99571,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 0
+      "emc": 3500,
+      "emc_sell": 1400
     },
     "minecraft:brewing_stand": {
       "id": "minecraft:brewing_stand",
@@ -99598,7 +99617,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 512
+      "emc": 35000,
+      "emc_sell": 14000
     },
     "minecraft:netherstar": {
       "id": "minecraft:netherstar",
@@ -99673,7 +99693,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 64
+      "emc": 4096,
+      "emc_sell": 1638
     },
     "minecraft:ender_pearl": {
       "id": "minecraft:ender_pearl",
@@ -99688,7 +99709,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 32
+      "emc": 512,
+      "emc_sell": 204
     },
     "minecraft:gold_ingot": {
       "id": "minecraft:gold_ingot",
@@ -99703,7 +99725,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 24
+      "emc": 512,
+      "emc_sell": 204
     },
     "minecraft:obsidian": {
       "id": "minecraft:obsidian",
@@ -100093,7 +100116,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 48
+      "emc": 1024,
+      "emc_sell": 409
     },
     "minecraft:diamond_axe": {
       "id": "minecraft:diamond_axe",
@@ -100213,7 +100237,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 256
+      "emc": 4500,
+      "emc_sell": 1800
     },
     "minecraft:magma_cream": {
       "id": "minecraft:magma_cream",
@@ -102223,7 +102248,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 432
+      "emc": 9216,
+      "emc_sell": 3686
     },
     "minecraft:netherite_pickaxe": {
       "id": "minecraft:netherite_pickaxe",
@@ -102253,7 +102279,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 4608
+      "emc": 73728,
+      "emc_sell": 29491
     },
     "minecraft:raw_gold": {
       "id": "minecraft:raw_gold",
@@ -102268,7 +102295,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 24
+      "emc": 512,
+      "emc_sell": 204
     },
     "minecraft:raw_iron": {
       "id": "minecraft:raw_iron",
@@ -102703,7 +102731,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 0
+      "emc": 300000,
+      "emc_sell": 120000
     },
     "rex:zeus": {
       "id": "rex:zeus",
@@ -102778,7 +102807,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 0
+      "emc": 180000,
+      "emc_sell": 72000
     },
     "minecraft:prismarine": {
       "id": "minecraft:prismarine",
@@ -102898,7 +102928,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 0
+      "emc": 100000,
+      "emc_sell": 40000
     },
     "minecraft:anvil": {
       "id": "minecraft:anvil",
@@ -104458,7 +104489,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 0
+      "emc": 400000,
+      "emc_sell": 160000
     },
     "minecraft:netherbrick": {
       "id": "minecraft:netherbrick",
@@ -107188,7 +107220,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 1024
+      "emc": 25000,
+      "emc_sell": 10000
     },
     "minecraft:coal_ore": {
       "id": "minecraft:coal_ore",
@@ -109558,7 +109591,8 @@ window.WIKI_DATA = {
       "slot": "",
       "durability": 0,
       "offhand": false,
-      "emc": 64
+      "emc": 512,
+      "emc_sell": 204
     },
     "minecraft:villager_spawn_egg": {
       "id": "minecraft:villager_spawn_egg",
@@ -223505,90 +223539,90 @@ window.WIKI_DATA = {
     {
       "id": "minecraft:raw_gold",
       "name": "Ouro Bruto",
-      "emc": 24,
-      "cat": "metals",
-      "buy": 24,
-      "sell": 9
-    },
-    {
-      "id": "minecraft:gold_ingot",
-      "name": "Barra de Ouro",
-      "emc": 24,
-      "cat": "metals",
-      "buy": 24,
-      "sell": 9
-    },
-    {
-      "id": "minecraft:gold_block",
-      "name": "Bloco de Ouro",
-      "emc": 216,
-      "cat": "metals",
-      "buy": 216,
-      "sell": 86
-    },
-    {
-      "id": "minecraft:diamond",
-      "name": "Diamante",
       "emc": 512,
       "cat": "metals",
       "buy": 512,
       "sell": 204
     },
     {
-      "id": "minecraft:diamond_block",
-      "name": "Bloco de Diamante",
+      "id": "minecraft:gold_ingot",
+      "name": "Barra de Ouro",
+      "emc": 512,
+      "cat": "metals",
+      "buy": 512,
+      "sell": 204
+    },
+    {
+      "id": "minecraft:gold_block",
+      "name": "Bloco de Ouro",
       "emc": 4608,
       "cat": "metals",
       "buy": 4608,
       "sell": 1843
     },
     {
+      "id": "minecraft:diamond",
+      "name": "Diamante",
+      "emc": 8192,
+      "cat": "metals",
+      "buy": 8192,
+      "sell": 3276
+    },
+    {
+      "id": "minecraft:diamond_block",
+      "name": "Bloco de Diamante",
+      "emc": 73728,
+      "cat": "metals",
+      "buy": 73728,
+      "sell": 29491
+    },
+    {
       "id": "minecraft:emerald",
       "name": "Esmeralda",
-      "emc": 48,
+      "emc": 1024,
       "cat": "metals",
-      "buy": 48,
-      "sell": 19
+      "buy": 1024,
+      "sell": 409
     },
     {
       "id": "minecraft:emerald_block",
       "name": "Bloco de Esmeralda",
-      "emc": 432,
+      "emc": 9216,
       "cat": "metals",
-      "buy": 432,
-      "sell": 172
+      "buy": 9216,
+      "sell": 3686
     },
     {
       "id": "minecraft:ancient_debris",
       "name": "Detritos Antigos",
-      "emc": 1024,
+      "emc": 25000,
       "cat": "metals",
-      "buy": 1024,
-      "sell": 409
+      "buy": 25000,
+      "sell": 10000
     },
     {
       "id": "minecraft:netherite_scrap",
       "name": "Sucata de Netherite",
-      "emc": 1024,
+      "emc": 25000,
       "cat": "metals",
-      "buy": 1024,
-      "sell": 409
+      "buy": 25000,
+      "sell": 10000
     },
     {
       "id": "minecraft:netherite_ingot",
       "name": "Barra de Netherite",
-      "emc": 4096,
+      "emc": 120000,
       "cat": "metals",
-      "buy": 4096,
-      "sell": 1638
+      "buy": 120000,
+      "sell": 48000
     },
     {
       "id": "minecraft:netherite_block",
       "name": "Bloco de Netherite",
-      "emc": 36864,
+      "emc": 1080000,
       "cat": "metals",
-      "buy": 36864,
-      "sell": 14745
+      "buy": 1080000,
+      "sell": 432000
     },
     {
       "id": "minecraft:coal",
@@ -223969,90 +224003,90 @@ window.WIKI_DATA = {
     {
       "id": "minecraft:ender_pearl",
       "name": "Pérola do End",
-      "emc": 32,
+      "emc": 512,
       "cat": "rare",
-      "buy": 32,
-      "sell": 12
+      "buy": 512,
+      "sell": 204
     },
     {
       "id": "minecraft:blaze_rod",
       "name": "Vara de Blaze",
-      "emc": 32,
+      "emc": 1024,
       "cat": "rare",
-      "buy": 32,
-      "sell": 12
+      "buy": 1024,
+      "sell": 409
     },
     {
       "id": "minecraft:ghast_tear",
       "name": "Lágrima de Ghast",
-      "emc": 64,
-      "cat": "rare",
-      "buy": 64,
-      "sell": 25
-    },
-    {
-      "id": "minecraft:shulker_shell",
-      "name": "Casca de Shulker",
-      "emc": 128,
-      "cat": "rare",
-      "buy": 128,
-      "sell": 51
-    },
-    {
-      "id": "minecraft:nether_star",
-      "name": "Estrela do Nether",
       "emc": 4096,
       "cat": "rare",
       "buy": 4096,
       "sell": 1638
     },
     {
+      "id": "minecraft:shulker_shell",
+      "name": "Casca de Shulker",
+      "emc": 15000,
+      "cat": "rare",
+      "buy": 15000,
+      "sell": 6000
+    },
+    {
+      "id": "minecraft:nether_star",
+      "name": "Estrela do Nether",
+      "emc": 250000,
+      "cat": "rare",
+      "buy": 250000,
+      "sell": 100000
+    },
+    {
       "id": "minecraft:totem_of_undying",
       "name": "Totem da Imortalidade",
-      "emc": 128,
+      "emc": 25000,
       "cat": "rare",
-      "buy": 128,
-      "sell": 51
+      "buy": 25000,
+      "sell": 10000
     },
     {
       "id": "minecraft:end_crystal",
       "name": "Cristal do End",
-      "emc": 512,
+      "emc": 8000,
       "cat": "rare",
-      "buy": 512,
-      "sell": 204
+      "buy": 8000,
+      "sell": 3200
     },
     {
       "id": "minecraft:dragon_breath",
       "name": "Bafo de Dragão",
-      "emc": 256,
+      "emc": 5000,
       "cat": "rare",
-      "buy": 256,
-      "sell": 102
+      "buy": 5000,
+      "sell": 2000
     },
     {
       "id": "minecraft:wither_skeleton_skull",
       "name": "Crânio de Esqueleto Wither",
-      "emc": 512,
+      "emc": 35000,
       "cat": "rare",
-      "buy": 512,
-      "sell": 204
+      "buy": 35000,
+      "sell": 14000
     },
     {
       "id": "minecraft:golden_apple",
       "name": "Maçã Dourada",
-      "emc": 256,
+      "emc": 4500,
       "cat": "rare",
-      "buy": 256,
-      "sell": 102
+      "buy": 4500,
+      "sell": 1800
     },
     {
       "id": "minecraft:enchanted_golden_apple",
-      "name": "Maçã Dourada Encantada",
-      "emc": 2048,
+      "name": "Maçã Dourada Encantada (Notch)",
+      "emc": 150000,
       "cat": "rare",
-      "buy": 2048,
-      "sell": 819
+      "buy": 150000,
+      "sell": 60000
     },
     {
       "id": "minecraft:experience_bottle",
@@ -224089,10 +224123,10 @@ window.WIKI_DATA = {
     {
       "id": "minecraft:name_tag",
       "name": "Etiqueta (Name Tag)",
-      "emc": 64,
+      "emc": 512,
       "cat": "rare",
-      "buy": 64,
-      "sell": 25
+      "buy": 512,
+      "sell": 204
     },
     {
       "id": "minecraft:villager_spawn_egg",
@@ -225417,18 +225451,18 @@ window.WIKI_DATA = {
     {
       "id": "sns:white_diamond",
       "name": "Diamante Branco (More Ores)",
-      "emc": 4000,
+      "emc": 16000,
       "cat": "mod_ores",
-      "buy": 4000,
-      "sell": 1600
+      "buy": 16000,
+      "sell": 6400
     },
     {
       "id": "sns:pink_diamond",
       "name": "Diamante Rosa Raro (More Ores)",
-      "emc": 5000,
+      "emc": 25000,
       "cat": "mod_ores",
-      "buy": 5000,
-      "sell": 2000
+      "buy": 25000,
+      "sell": 10000
     },
     {
       "id": "sns:echo",
@@ -225569,10 +225603,10 @@ window.WIKI_DATA = {
     {
       "id": "utilitycraft:shulker_shell_shard",
       "name": "Fragmento de Shulker (UtilityCraft)",
-      "emc": 1500,
+      "emc": 7500,
       "cat": "mod_ores",
-      "buy": 1500,
-      "sell": 600
+      "buy": 7500,
+      "sell": 3000
     },
     {
       "id": "create:raw_zinc",
@@ -225705,10 +225739,10 @@ window.WIKI_DATA = {
     {
       "id": "digital_miner:diamond_dust",
       "name": "Pó de Diamante (Digital Miner)",
-      "emc": 512,
+      "emc": 8192,
       "cat": "mod_ores",
-      "buy": 512,
-      "sell": 204
+      "buy": 8192,
+      "sell": 3276
     },
     {
       "id": "digital_miner:coal_dust",
@@ -226005,6 +226039,94 @@ window.WIKI_DATA = {
       "cat": "rare",
       "buy": 12000000000,
       "sell": 4800000000
+    },
+    {
+      "id": "minecraft:beacon",
+      "name": "Sinalizador (Beacon)",
+      "emc": 300000,
+      "cat": "rare",
+      "buy": 300000,
+      "sell": 120000
+    },
+    {
+      "id": "minecraft:dragon_egg",
+      "name": "Ovo do Dragão (Item Único)",
+      "emc": 1000000,
+      "cat": "rare",
+      "buy": 1000000,
+      "sell": 400000
+    },
+    {
+      "id": "minecraft:elytra",
+      "name": "Élitros (Asas do End)",
+      "emc": 500000,
+      "cat": "rare",
+      "buy": 500000,
+      "sell": 200000
+    },
+    {
+      "id": "minecraft:shulker_box",
+      "name": "Caixa de Shulker",
+      "emc": 35000,
+      "cat": "rare",
+      "buy": 35000,
+      "sell": 14000
+    },
+    {
+      "id": "minecraft:heart_of_the_sea",
+      "name": "Coração do Mar",
+      "emc": 100000,
+      "cat": "rare",
+      "buy": 100000,
+      "sell": 40000
+    },
+    {
+      "id": "minecraft:nautilus_shell",
+      "name": "Concha de Náutilo",
+      "emc": 8000,
+      "cat": "rare",
+      "buy": 8000,
+      "sell": 3200
+    },
+    {
+      "id": "minecraft:conduit",
+      "name": "Conduto Aquático Ativado",
+      "emc": 180000,
+      "cat": "rare",
+      "buy": 180000,
+      "sell": 72000
+    },
+    {
+      "id": "minecraft:heavy_core",
+      "name": "Núcleo Pesado (Heavy Core Trial)",
+      "emc": 400000,
+      "cat": "rare",
+      "buy": 400000,
+      "sell": 160000
+    },
+    {
+      "id": "minecraft:breeze_rod",
+      "name": "Vara de Brisa (Trial Chambers)",
+      "emc": 3500,
+      "cat": "rare",
+      "buy": 3500,
+      "sell": 1400
+    },
+    {
+      "id": "minecraft:echo_shard",
+      "name": "Fragmento de Eco (Deep Dark)",
+      "emc": 30000,
+      "cat": "rare",
+      "buy": 30000,
+      "sell": 12000
+    },
+    {
+      "id": "minecraft:recovery_compass",
+      "name": "Bússola de Recuperação",
+      "emc": 250000,
+      "cat": "rare",
+      "buy": 250000,
+      "sell": 100000
     }
   ]
 };
