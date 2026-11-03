@@ -1509,7 +1509,148 @@
       display: inline-block;
     }
 
+  
+    /* ROADMAP PROGRESSION GUIDE */
+    .roadmap-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 24px;
+      position: relative;
+    }
+    .roadmap-timeline::before {
+      content: '';
+      position: absolute;
+      left: 36px;
+      top: 20px;
+      bottom: 20px;
+      width: 4px;
+      background: linear-gradient(180deg, #38bdf8 0%, #a855f7 40%, #f59e0b 70%, #ef4444 100%);
+      border-radius: 4px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+    .roadmap-tier-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px 28px 24px 76px;
+      position: relative;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .roadmap-tier-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateX(4px);
+      box-shadow: 0 12px 35px rgba(56, 189, 248, 0.25);
+    }
+    .roadmap-tier-icon {
+      position: absolute;
+      left: 14px;
+      top: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #0f172a;
+      border: 3px solid var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+      z-index: 2;
+    }
+    .roadmap-tier-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .roadmap-items-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .roadmap-item-chip {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .roadmap-item-chip:hover {
+      border-color: var(--accent-gold);
+      background: rgba(251, 191, 36, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* SEARCH HIGHLIGHTING */
+    mark.search-highlight {
+      background: rgba(251, 191, 36, 0.4);
+      color: #fff;
+      padding: 0 3px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    /* FLOATING BACK TO TOP */
+    #btn-back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(168, 85, 247, 0.3));
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    #btn-back-to-top:hover {
+      transform: translateY(-4px) scale(1.08);
+      border-color: #fff;
+      box-shadow: 0 12px 25px rgba(56, 189, 248, 0.5);
+    }
+
+    /* MODAL HISTORY BACK BUTTON */
+    .modal-back-btn {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--accent-cyan);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+    .modal-back-btn:hover {
+      background: rgba(56, 189, 248, 0.3);
+      color: #fff;
+      transform: translateX(-2px);
+    }
   </style>
+
 
 </head>
 <body>
@@ -1532,6 +1673,13 @@
             </p>
           </div>
         </div>
+        
+        <div class="header-actions" style="display:flex; align-items:center; gap:12px;">
+          <button id="sound-toggle-btn" class="quick-chip" onclick="toggleSound()" style="font-size:0.75rem; border-color:rgba(56,189,248,0.4); color:#38bdf8;">
+            🔊 Sons: Ativados
+          </button>
+        </div>
+
         <div class="stats-row">
           <div class="stat-pill">
             <span class="stat-ico">🧩</span>
@@ -1559,6 +1707,7 @@
 
       <div class="controls-bar">
         <div class="nav-tabs">
+          <button class="tab-btn" onclick="switchTab('roadmap')" id="tab-roadmap" style="background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(239,68,68,0.25)); border: 1px solid rgba(245,158,11,0.6); color: #fff; box-shadow: 0 0 15px rgba(245,158,11,0.4);">🗺️ Guia de Progressão Survival</button>
           <button class="tab-btn active" onclick="switchTab('supreme')" id="tab-supreme">👑 Arsenal Supremo (7 Divinas & 10 Armaduras)</button>
           <button class="tab-btn" onclick="switchTab('magia')" id="tab-magia" style="background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(56,189,248,0.25)); border: 1px solid rgba(168,85,247,0.6); color: #fff; box-shadow: 0 0 15px rgba(168,85,247,0.4);">🧙‍♂️ Mundo Arcano (Varinhas & Magia)</button>
           <button class="tab-btn" onclick="switchTab('bosses')" id="tab-bosses" style="background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(56,189,248,0.5); color: #fff;">🐙 Bosses & Raids Épicas</button>
@@ -1572,6 +1721,7 @@
         <!-- Quick Filter Pills under Search Bar -->
         <div class="quick-chips-row" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; margin-bottom:4px;">
           <button class="quick-chip active" onclick="quickFilterAction('all', this)">✨ Todos</button>
+          <button class="quick-chip" onclick="quickFilterAction('roadmap', this)">🗺️ Guia de Progressão</button>
           <button class="quick-chip" onclick="quickFilterAction('magia', this)">🧙‍♂️ Mundo Arcano (Varinhas & Vassouras)</button>
           <button class="quick-chip" onclick="quickFilterAction('god_swords', this)">⚔️ 7 Armas Divinas</button>
           <button class="quick-chip" onclick="quickFilterAction('armors_3d', this)">🛡️ 10 Armaduras 3D</button>
@@ -1907,6 +2057,61 @@
     }
 
 
+    
+    // Web Audio API Synthesizer (Zero External Dependencies)
+    let soundEnabled = localStorage.getItem('wiki_sound_enabled') !== 'false';
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('wiki_sound_enabled', soundEnabled);
+      const btn = document.getElementById('sound-toggle-btn');
+      if (btn) {
+        btn.textContent = soundEnabled ? '🔊 Sons: Ativados' : '🔇 Silencioso';
+        btn.style.color = soundEnabled ? '#38bdf8' : '#94a3b8';
+      }
+    }
+
+    function playUiSound(type = 'click') {
+      if (!soundEnabled) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+        if (type === 'click') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(800, now);
+          osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'magic') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(520, now);
+          osc.frequency.exponentialRampToValueAtTime(1040, now + 0.12);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+          osc.start(now);
+          osc.stop(now + 0.16);
+        }
+      } catch (err) {}
+    }
+
+    // Modal Navigation History Stack
+    let modalHistory = [];
+    let currentModalId = null;
+
+    function goBackModal() {
+      if (modalHistory.length > 0) {
+        const prevId = modalHistory.pop();
+        openItemModal(prevId, true);
+      }
+    }
+
     let emcCategoryFilter = 'ALL';
 
     function setEmcCategory(cat, btnEl) {
@@ -1930,6 +2135,9 @@
         modFilter.value = 'ALL';
         catFilter.value = 'ALL';
         switchTab('supreme');
+      } else if (type === 'roadmap') {
+        sInput.value = '';
+        switchTab('roadmap');
       } else if (type === 'magia') {
         sInput.value = '';
         switchTab('magia');
@@ -1980,6 +2188,7 @@
     });
 
     function switchTab(tab) {
+      playUiSound('click');
       currentTab = tab;
       currentPage = 1;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -2163,6 +2372,144 @@
 
       
       
+      
+      if (currentTab === 'roadmap') {
+        titleEl.textContent = '🗺️ Guia de Progressão do Sobrevivência (Roadmap do Jogador)';
+        countEl.textContent = '5 Fases de Evolução: Do Primitivo ao Deus Cósmico';
+        gridEl.className = 'roadmap-container';
+        pagEl.innerHTML = '';
+
+        gridEl.innerHTML = `
+          <div class="magic-hero-banner" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.95)), url('assets/banners/wand_duel_multiverse.jpg') center/cover;">
+            <span class="badge" style="background:rgba(245,158,11,0.25); color:#fbbf24; border:1px solid rgba(245,158,11,0.5);">🗺️ ROTA DE CONQUISTA TOTAL</span>
+            <h2 style="font-family:'Cinzel',serif; font-size:1.85rem; color:#fff; margin-top:8px;">
+              Como Evoluir no Servidor do Início ao Fim
+            </h2>
+            <p style="color:#cbd5e1; font-size:0.92rem; line-height:1.6; max-width:850px; margin-top:6px;">
+              No servidor, <strong>100% dos itens são craftáveis na bancada de trabalho 3x3 normal</strong>! O sistema de EMC é opcional para quem deseja transmutar, mas você pode minerar, forjar, fazer máquinas e derrotar chefes no ritmo clássico de RPG.
+            </p>
+          </div>
+
+          <div class="roadmap-timeline">
+            <!-- TIER 1 -->
+            <div class="roadmap-tier-card">
+              <div class="roadmap-tier-icon" style="border-color:#38bdf8; color:#38bdf8;">⛏️</div>
+              <span class="roadmap-tier-badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">FASE 1 • MINERAÇÃO & LIGAS INDUSTRIAIS</span>
+              <h3 style="font-family:'Orbitron',sans-serif; color:#fff; font-size:1.2rem; margin-top:4px;">
+                Idade do Ferro, Aço da UtilityCraft & Gemas de More Ores
+              </h3>
+              <p style="color:#cbd5e1; font-size:0.88rem; line-height:1.5; margin-top:6px;">
+                Comece minerando minérios brutos nos subsolos profundos. Encontre Rubis e Safiras do mod <strong>More Ores</strong> e monte sua primeira Forja Primitiva para produzir as <strong>Barras de Aço</strong> da UtilityCraft.
+              </p>
+              <div class="roadmap-items-row">
+                ${['utilitycraft:steel_ingot', 'sns:ruby', 'sns:sapphire', 'minecraft:diamond_block', 'minecraft:netherite_ingot'].map(id => {
+                  const it = getItem(id);
+                  return `
+                    <div class="roadmap-item-chip" onclick="openItemModal('${id}')">
+                      <div class="item-icon-box" style="width:36px; height:36px;">${renderIconHtml(it)}</div>
+                      <span style="font-weight:700; font-size:0.85rem; color:#fff;">${it.name}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <!-- TIER 2 -->
+            <div class="roadmap-tier-card">
+              <div class="roadmap-tier-icon" style="border-color:#a855f7; color:#a855f7;">⚡</div>
+              <span class="roadmap-tier-badge" style="background:rgba(168,85,247,0.2); color:#a855f7;">FASE 2 • ALQUIMIA & MATÉRIA ESCURA</span>
+              <h3 style="font-family:'Orbitron',sans-serif; color:#fff; font-size:1.2rem; margin-top:4px;">
+                Transmutação Quântica, Matéria Escura & Matéria Vermelha
+              </h3>
+              <p style="color:#cbd5e1; font-size:0.88rem; line-height:1.5; margin-top:6px;">
+                Fabrique o <strong>Tablet de Transmutação Quântica</strong> (<code style="color:var(--accent-cyan);">cult:quantum_tablet</code>) ou forje sua primeira <strong>Matéria Escura</strong> com Obsidiana e Diamantes na bancada 3x3. Ela será a base de todas as armas e armaduras avançadas!
+              </p>
+              <div class="roadmap-items-row">
+                ${['cult:quantum_tablet', 'cult:dark_matter', 'cult:red_matter', 'cult:dark_matter_sword', 'cult:dark_matter_pickaxe'].map(id => {
+                  const it = getItem(id);
+                  return `
+                    <div class="roadmap-item-chip" onclick="openItemModal('${id}')">
+                      <div class="item-icon-box" style="width:36px; height:36px;">${renderIconHtml(it)}</div>
+                      <span style="font-weight:700; font-size:0.85rem; color:#fff;">${it.name}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <!-- TIER 3 -->
+            <div class="roadmap-tier-card">
+              <div class="roadmap-tier-icon" style="border-color:#34d399; color:#34d399;">🧙‍♂️</div>
+              <span class="roadmap-tier-badge" style="background:rgba(52,211,153,0.2); color:#34d399;">FASE 3 • MUNDO ARCANO & VASSOURAS VOADORAS</span>
+              <h3 style="font-family:'Orbitron',sans-serif; color:#fff; font-size:1.2rem; margin-top:4px;">
+                Iniciação Bruxa, Voo Aéreo & Duelos de Varinha
+              </h3>
+              <p style="color:#cbd5e1; font-size:0.88rem; line-height:1.5; margin-top:6px;">
+                Forje sua primeira <strong>Varinha de Aprendiz</strong> com Ametista e a <strong>Vassoura Raio de Carvalho</strong> para voar pelos céus. Aprenda os feitiços solares Lumos e o congelamento Glacius, e domestique um Hipogrifo Celestial!
+              </p>
+              <div class="roadmap-items-row">
+                ${['cult:wand_arcane_apprentice', 'cult:wand_lumos_solar', 'cult:broom_oak_swift', 'cult:broom_nimbus_celestial', 'cult:hippogriff_celestial'].map(id => {
+                  const it = getItem(id);
+                  return `
+                    <div class="roadmap-item-chip" onclick="openItemModal('${id}')">
+                      <div class="item-icon-box" style="width:36px; height:36px;">${renderIconHtml(it)}</div>
+                      <span style="font-weight:700; font-size:0.85rem; color:#fff;">${it.name}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <!-- TIER 4 -->
+            <div class="roadmap-tier-card">
+              <div class="roadmap-tier-icon" style="border-color:#f59e0b; color:#f59e0b;">🐙</div>
+              <span class="roadmap-tier-badge" style="background:rgba(245,158,11,0.2); color:#f59e0b;">FASE 4 • RAIDS DE BOSSES & RELÍQUIAS PROIBIDAS</span>
+              <h3 style="font-family:'Orbitron',sans-serif; color:#fff; font-size:1.2rem; margin-top:4px;">
+                Batalhas Contra o Kraken (300k HP), Nihilus e a Varinha de Sabugueiro
+              </h3>
+              <p style="color:#cbd5e1; font-size:0.88rem; line-height:1.5; margin-top:6px;">
+                Desça às fossas oceânicas e enfrente o <strong>Kraken das Profundezas</strong> para obter seu Coração e Chifre. Enfrente <strong>Nihilus</strong> no Fim. Forje a temida <strong>Varinha de Sabugueiro da Morte</strong> (Avada Arcano - 6.000 Dano) e o Tridente do Leviatã!
+              </p>
+              <div class="roadmap-items-row">
+                ${['cult:kraken_heart', 'cult:abyssal_horn', 'cult:abyssal_eye_of_nihilus', 'cult:wand_elder_death', 'cult:leviathan_trident'].map(id => {
+                  const it = getItem(id);
+                  return `
+                    <div class="roadmap-item-chip" onclick="openItemModal('${id}')">
+                      <div class="item-icon-box" style="width:36px; height:36px;">${renderIconHtml(it)}</div>
+                      <span style="font-weight:700; font-size:0.85rem; color:#fff;">${it.name}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <!-- TIER 5 -->
+            <div class="roadmap-tier-card">
+              <div class="roadmap-tier-icon" style="border-color:#ef4444; color:#ef4444;">👑</div>
+              <span class="roadmap-tier-badge" style="background:rgba(239,68,68,0.2); color:#ef4444;">FASE 5 • ARSENAL DIVINO & OMNIVERSO SUPREMO</span>
+              <h3 style="font-family:'Orbitron',sans-serif; color:#fff; font-size:1.2rem; margin-top:4px;">
+                As 7 Armas Divinas & Armaduras de Singularidade 3D
+              </h3>
+              <p style="color:#cbd5e1; font-size:0.88rem; line-height:1.5; margin-top:6px;">
+                O topo absoluto do poder. Forje as <strong>Singularidades Cósmicas e de Antimatéria</strong> para craftar as lendárias 7 Espadas Divinas, as pistolas duplas <strong>Los Lobos Akimbo</strong> e a armadura do <strong>Deus da Singularidade</strong>!
+              </p>
+              <div class="roadmap-items-row">
+                ${['cult:genesis_oblivion_blade', 'cult:void_monarch_katana', 'cult:chronos_infinity_scythe', 'cult:omniverse_apex_annihilator', 'cult:stark_akimbo_pistols', 'cult:singularity_god_chestplate'].map(id => {
+                  const it = getItem(id);
+                  return `
+                    <div class="roadmap-item-chip" onclick="openItemModal('${id}')">
+                      <div class="item-icon-box" style="width:36px; height:36px;">${renderIconHtml(it)}</div>
+                      <span style="font-weight:700; font-size:0.85rem; color:#fff;">${it.name}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
       if (currentTab === 'magia') {
         titleEl.textContent = '🧙‍♂️ Mundo Arcano — A Grande Expansão Mágica (Harry Potter Inspired)';
         countEl.textContent = '15 Itens, Varinhas, Vassouras & Criaturas Mágicas';
@@ -2652,7 +2999,12 @@
       setTimeout(() => { btn.innerHTML = old; }, 1800);
     }
 
-    function openItemModal(itemId) {
+    function openItemModal(itemId, isBack = false) {
+      playUiSound('magic');
+      if (!isBack && currentModalId && currentModalId !== itemId) {
+        modalHistory.push(currentModalId);
+      }
+      currentModalId = itemId;
       hideTooltip();
       const it = getItem(itemId);
       const craftRecipes = recipesByResult[itemId] || [];
@@ -2664,6 +3016,11 @@
 
       box.innerHTML = `
         <button class="modal-close" onclick="closeModal()">✕</button>
+        ${modalHistory.length > 0 ? `
+          <button class="modal-back-btn" onclick="goBackModal()">
+            ⬅️ Voltar para: ${getItem(modalHistory[modalHistory.length - 1]).name}
+          </button>
+        ` : ''}
         <div style="display:flex; align-items:center; gap:18px; margin-bottom:22px; flex-wrap:wrap;">
           <div class="item-icon-box" style="width:76px; height:76px;">
             ${renderIconHtml(it)}
@@ -2724,6 +3081,8 @@
     }
 
     function closeModal() {
+      modalHistory = [];
+      currentModalId = null;
       document.getElementById('item-modal').classList.remove('open');
     }
 
@@ -2812,5 +3171,11 @@
     </div>
   </div>
 
+
+  <!-- Floating Back to Top Button -->
+  <button id="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao Topo">
+    ⬆️
+  </button>
 </body>
+
 </html>
