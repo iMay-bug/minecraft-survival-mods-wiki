@@ -207,8 +207,8 @@ window.WIKI_DATA = {
     {
       "id": "Expansive_Biomes_BP",
       "name": "[v1.7.64] Expansive Biomes - BP",
-      "desc": "Expansive Biomes & RPG Supremo Multiverso [v1.1.6] - 7 Módulos RPG, Varinhas e Vassouras 3D, 10 Conjuntos de Armaduras Únicas, 7 Armas Divinas, Chefes e Criaturas Míticas.",
-      "version": "1.1.6",
+      "desc": "Expansive Biomes & RPG Supremo Multiverso [v1.1.7] - 7 Módulos RPG, Varinhas/Vassouras 3D, Armaduras Únicas, Chefes Míticos, e Sistema Especial de Porcos Explosivos e Gatinhos de Colo Gordinhos.",
+      "version": "1.1.7",
       "active": true,
       "icon": "assets/mods/Expansive_Biomes_BP.png",
       "itemsCount": 184,
@@ -110164,6 +110164,22 @@ window.WIKI_DATA = {
       "durability": 0,
       "offhand": false,
       "emc": 12000000000
+    },
+    "cult:chubby_cat": {
+      "id": "cult:chubby_cat",
+      "name": "Gatinho Gordinho de Colo",
+      "lore": "Um companheiro felino rechonchudo e carinhoso. Ao ser segurado na mão, ronrona suavemente, concede Regeneração I e repele Creepers! Clique com o item para colocá-lo de volta no chão.",
+      "modId": "Expansive_Biomes_BP",
+      "modName": "[v1.7.64] Expansive Biomes - BP",
+      "icon": "assets/icons/chubby_cat.png",
+      "type": "companion",
+      "damage": 0,
+      "protection": 0,
+      "slot": "mainhand",
+      "tier": "Especial - Companheiro Pet",
+      "durability": 0,
+      "offhand": true,
+      "emc": 1500000
     }
   },
   "recipes": [
